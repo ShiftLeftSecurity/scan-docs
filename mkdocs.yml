@@ -21,6 +21,16 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+  logo: images/logo.svg
+  favicon: images/favicon.ico
+  extra:
+    social:
+      - icon: fontawesome/brands/github-alt
+        link: http://github.com/ShiftLeftSecurity
+      - icon: fontawesome/brands/twitter
+        link: https://twitter.com/ShiftLeftInc
+      - icon: fontawesome/brands/linkedin
+        link: https://www.linkedin.com/company/shiftleft
 
 plugins:
   - search
@@ -31,15 +41,15 @@ extra_css:
   - css/custom.css
 
 nav:
-  - 'index.md'
-  - 'Getting started': 'getting-started/README.md'
-  - 'CI/CD Integrations': 'integrations/README.md'
-  - 'CI/CD Integrations':
-    - 'Azure DevOps Pipelines': 'integrations/azure-devops-pipeline.md'
-    - 'Github Actions': 'integrations/github-actions.md'
-    - 'GitLab CI': 'integrations/gitlab.md'
-    - 'Google CloudBuild': 'integrations/google-cloudbuild.md'
-    - 'Circle CI': 'integrations/circleci.md'
-    - 'Jenkins': 'integrations/jenkins.md'
-    - 'Travis CI': 'integrations/travis.md'
-  - 'IDE Integration': 'integrations/vscode.md'
+  - "index.md"
+  - "Getting started": "getting-started/README.md"
+  - "CI/CD Integrations": "integrations/README.md"
+  - "CI/CD Integrations":
+      - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
+      - "Github Actions": "integrations/github-actions.md"
+      - "GitLab CI": "integrations/gitlab.md"
+      - "Google CloudBuild": "integrations/google-cloudbuild.md"
+      - "Circle CI": "integrations/circleci.md"
+      - "Jenkins": "integrations/jenkins.md"
+      - "Travis CI": "integrations/travis.md"
+  - "IDE Integration": "integrations/vscode.md"
