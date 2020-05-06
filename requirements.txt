@@ -1,0 +1,5 @@
+mkdocs
+mkdocs-new-features-notifier
+mkdocs-nav-enhancements
+mkdocs-material
+mkdocs-minify-plugin
