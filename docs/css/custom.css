@@ -1,3 +1,12 @@
 .md-footer-copyright {
-    display: none;
+  display: none;
+}
+
+.md-header,
+.md-tabs {
+  background: linear-gradient(to right, #5140e6 0, #11f2ff 100%);
+}
+
+.md-footer {
+  background-color: #303284;
 }
