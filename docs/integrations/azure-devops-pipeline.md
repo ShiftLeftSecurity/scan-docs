@@ -6,23 +6,23 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
 
 2. Simply add the following snippet to your build configuration YAML file (Usually azure-pipelines.yml).
 
-   ```yaml
-   - script: |
-       docker run \
-         -v "$(Build.SourcesDirectory):/app:cached" \
-         -v "$(Build.ArtifactStagingDirectory):/reports:cached" \
-         shiftleft/sast-scan scan --src /app \
-         --out_dir /reports/CodeAnalysisLogs
-     displayName: "Perform ShiftLeft Scan"
-     continueOnError: "true"
+```yaml
+- script: |
+    docker run \
+      -v "$(Build.SourcesDirectory):/app:cached" \
+      -v "$(Build.ArtifactStagingDirectory):/reports:cached" \
+      shiftleft/sast-scan scan --src /app \
+      --out_dir /reports/CodeAnalysisLogs
+  displayName: "Perform ShiftLeft Scan"
+  continueOnError: "true"
 
-   - task: PublishBuildArtifacts@1
-     displayName: "Publish analysis logs"
-     inputs:
-       PathtoPublish: "$(Build.ArtifactStagingDirectory)/CodeAnalysisLogs"
-       ArtifactName: "CodeAnalysisLogs"
-       publishLocation: "Container"
-   ```
+- task: PublishBuildArtifacts@1
+  displayName: "Publish analysis logs"
+  inputs:
+    PathtoPublish: "$(Build.ArtifactStagingDirectory)/CodeAnalysisLogs"
+    ArtifactName: "CodeAnalysisLogs"
+    publishLocation: "Container"
+```
 
 3. Trigger a build as normal and wait for it to complete.
 
@@ -44,25 +44,25 @@ By default, jobs run on the host machine where the agent is installed. This is c
 
 ```yaml
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 container: shiftleft/sast-scan:latest
 steps:
-# This integrates ShiftLeft Scan with automatic build
-- script: scan --build --out_dir $(Build.ArtifactStagingDirectory)/CodeAnalysisLogs
-  env:
-    WORKSPACE: https://github.com/prabhu/HelloShiftLeft/blob/$(Build.SourceVersion)
-    GITHUB_TOKEN: $(GITHUB_TOKEN)
-  displayName: "Perform ShiftLeft scan"
-  continueOnError: "true"
+  # This integrates ShiftLeft Scan with automatic build
+  - script: scan --build --out_dir $(Build.ArtifactStagingDirectory)/CodeAnalysisLogs
+    env:
+      WORKSPACE: https://github.com/prabhu/HelloShiftLeft/blob/$(Build.SourceVersion)
+      GITHUB_TOKEN: $(GITHUB_TOKEN)
+    displayName: "Perform ShiftLeft scan"
+    continueOnError: "true"
 
-# To integrate with the ShiftLeft Scan Extension it is necessary to publish the CodeAnalysisLogs folder
-# as an artifact with the same name
-- task: PublishBuildArtifacts@1
-  displayName: "Publish analysis logs"
-  inputs:
-    PathtoPublish: "$(Build.ArtifactStagingDirectory)/CodeAnalysisLogs"
-    ArtifactName: "CodeAnalysisLogs"
-    publishLocation: "Container"
+  # To integrate with the ShiftLeft Scan Extension it is necessary to publish the CodeAnalysisLogs folder
+  # as an artifact with the same name
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish analysis logs"
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)/CodeAnalysisLogs"
+      ArtifactName: "CodeAnalysisLogs"
+      publishLocation: "Container"
 ```
 
 Further, by adding `--build` argument with scan command supported projects such as java, csharp, go or node.js can also be built on the fly thus speeding up the analysis. Please use container job based pipelines if your organization supports.
