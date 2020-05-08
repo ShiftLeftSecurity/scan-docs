@@ -2,9 +2,9 @@ version: 2
 formats: all
 
 python:
-   version: 3.7
-   install:
-      - requirements: requirements.txt
+  version: 3.7
+  install:
+    - requirements: requirements.txt
 
 mkdocs:
   configuration: mkdocs.yml
