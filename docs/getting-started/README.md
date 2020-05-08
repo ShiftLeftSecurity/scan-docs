@@ -12,7 +12,7 @@ ShiftLeft Scan is distributed as a container [image](https://hub.docker.com/r/sh
 ### Your first scan
 
 === "Linux and Mac"
-    Invoking the `scan` command detects the language automatically and proceeds with a scan
+    Invoking the `scan` command *detects* the language automatically and proceeds with a scan
 
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
@@ -70,6 +70,38 @@ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --sr
 ```bash
 docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan scan --src /app --type java
 ```
+
+### Language specific scans
+
+=== "Credential scanning"
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type credscan
+    ```
+
+=== "Python"
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type python
+    ```
+
+=== "Dependency scanning"
+    To perform dependency scanning, create a personal access token with `read:packages` scope from settings -> developer settings on github.
+    ![Reports](../integrations/img/github_token.png)
+    Then pass this value as `GITHUB_TOKEN` as shown.
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type depscan
+    ```
+
+=== "Node.js"
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type nodejs
+    ```
+
+=== "go"
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type go
+    ```
+
+Refer to the [readme](https://github.com/ShiftLeftSecurity/sast-scan#bundled-tools) for a complete list of all scan types.
 
 ### Sample invocation
 

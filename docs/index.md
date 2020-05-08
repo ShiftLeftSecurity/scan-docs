@@ -7,7 +7,7 @@ ShiftLeft Scan is a free [open-source](https://github.com/ShiftLeftSecurity/sast
 * [x] Open-source dependencies audit
 * [x] Licence violation checks
 
-!!! summary
+!!! Summary
     Scan supports a range of integration options: from scanning the code on your IDE to scanning every build and pull-request in the CI/CD pipelines.
 
 ## Supported Languages & Frameworks
