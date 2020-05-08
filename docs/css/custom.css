@@ -7,6 +7,18 @@
   background: linear-gradient(to right, #5140e6 0, #11f2ff 100%);
 }
 
+.md-content {
+  background-color: #fff;
+}
+
 .md-footer {
-  background-color: #303284;
+  background-color: #272879;
+}
+
+.md-content {
+  max-width: calc(100% - 5.1rem * 2);
+}
+
+.md-main {
+  background-color: rgba(87, 37, 225, 0.2);
 }
