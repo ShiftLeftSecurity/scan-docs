@@ -4,3 +4,4 @@ mkdocs-nav-enhancements
 mkdocs-material
 mkdocs-minify-plugin
 pymdown-extensions
+mkdocs-git-revision-date-localized-plugin

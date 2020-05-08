@@ -6,33 +6,56 @@ ShiftLeft Scan is distributed as a container [image](https://hub.docker.com/r/sh
 
 ### Pre-requisites
 
-- Docker [desktop](https://www.docker.com/products/docker-desktop) in case of Windows and Mac. For [linux](https://docs.docker.com/engine/install/) complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
+- Docker [desktop](https://www.docker.com/products/docker-desktop) in case of Windows and Mac
+- For linux [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
 
 ### Your first scan
 
-Invoking the `scan` command detects the language automatically and proceeds with a scan
+=== "Linux and Mac"
+    Invoking the `scan` command detects the language automatically and proceeds with a scan
 
-```bash
-docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
-```
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
+    ```
 
-For project types such as Java, go compile the projects prior to scanning. Or pass `--build` to attempt automatic build.
+    For project types such as Java, go compile the projects prior to scanning. Or pass `--build` to attempt automatic build.
 
-```bash
-docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --build
-```
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --build
+    ```
 
-For scanning a specific language project, use the `--type` option. For example, for scanning a python project,
+    For scanning a specific language project, use the `--type` option. For example, for scanning a python project,
 
-```bash
-docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type python
-```
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type python
+    ```
 
-On Windows use `%cd%` instead of \$PWD to run the scan with Command prompt
+=== "Windows"
+    On Windows use `%cd%` instead of \$PWD to run the scan with Command prompt
 
-```cmd
-docker run --rm -e "WORKSPACE=%cd%" -v "%cd%:/app:cached" shiftleft/sast-scan scan --src /app --type python
-```
+    ```cmd
+    docker run --rm -e "WORKSPACE=%cd%" -v "%cd%:/app:cached" shiftleft/sast-scan scan --src /app --type python
+    ```
+
+    powershell and powershell core
+
+    ```powershell
+    docker run --rm -e "WORKSPACE=$(pwd)" -e "GITHUB_TOKEN=$env:GITHUB_TOKEN" -v "$(pwd):/app:cached" shiftleft/scan scan
+    ```
+
+    WSL bash
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app:cached" shiftleft/scan scan
+    ```
+
+    git-bash
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "/$PWD:/app:cached" shiftleft/scan scan
+    ```
+
+    Don't forget the slash (/) before \$PWD for git-bash!
 
 To scan multiple projects, separate the types with a comma. Here reports will be put in the directory specified by `--out_dir`
 
@@ -40,16 +63,15 @@ To scan multiple projects, separate the types with a comma. Here reports will be
 docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --src /app --type credscan,nodejs,python,yaml --out_dir /app/reports
 ```
 
-**Scanning Java Projects**
+### Scanning Java Projects
 
-> For Java and JVM projects, it is important to compile the projects before invoking sast-scan in the dev and CI workflow.
+> For Java and JVM projects, it is important to *compile* the projects before invoking sast-scan in the dev and CI workflow.
 
 ```bash
-docker run --rm -e "WORKSPACE=${PWD}" -v ~/.m2:/.m2 -v <source path>:/app shiftleft/sast-scan scan --src /app --type java
-
-# For gradle projects
-docker run --rm -e "WORKSPACE=${PWD}" -v ~/.gradle:/.gradle -v <source path>:/app shiftleft/sast-scan scan --src /app --type java
+docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan scan --src /app --type java
 ```
+
+### Sample invocation
 
 ```
 $ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan

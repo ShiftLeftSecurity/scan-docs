@@ -23,19 +23,21 @@ theme:
     code: Roboto Mono
   logo: images/scan-logo-dark.svg
   favicon: images/favicon.ico
-  extra:
-    social:
-      - icon: fontawesome/brands/github-alt
-        link: http://github.com/ShiftLeftSecurity
-      - icon: fontawesome/brands/twitter
-        link: https://twitter.com/ShiftLeftInc
-      - icon: fontawesome/brands/linkedin
-        link: https://www.linkedin.com/company/shiftleft
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: http://github.com/ShiftLeftSecurity
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/ShiftLeftInc
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/shiftleft
 
 plugins:
-  - search
+  - search:
+      prebuild_index: true
   - minify:
       minify_html: true
+  - git-revision-date-localized
 
 extra_css:
   - css/custom.css
@@ -47,9 +49,21 @@ nav:
   - "CI/CD Integrations":
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
       - "Github Actions": "integrations/github-actions.md"
+      - "Github Code scanning": "integrations/code-scan.md"
       - "GitLab CI": "integrations/gitlab.md"
       - "Google CloudBuild": "integrations/google-cloudbuild.md"
       - "Circle CI": "integrations/circleci.md"
       - "Jenkins": "integrations/jenkins.md"
       - "Travis CI": "integrations/travis.md"
   - "IDE Integration": "integrations/vscode.md"
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde

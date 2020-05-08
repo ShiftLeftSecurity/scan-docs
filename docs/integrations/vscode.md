@@ -28,7 +28,7 @@ ShiftLeft Scan is full integrated with Visual Studio Code IDE via its own native
 
 1. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/). Requires version 1.41.0 or higher.
 2. Open up the extensions tab (Ctrl + Shift + X) and search for "ShiftLeft Scan". Click "Install"
-3. Alternatively, Quick Open (Ctrl + P)m paste the follwing command `ext install shiftleftsecurity.shiftleft-scan` and press enter. 
+3. Alternatively, Quick Open (Ctrl + P)m paste the follwing command `ext install shiftleftsecurity.shiftleft-scan` and press enter.
 4. Reload VS Code
 5. Install Docker Desktop for performing ShiftLeft Scan
 
@@ -44,7 +44,8 @@ While working with large monorepo based repositories, configure the application 
 
 ![AppRoot Preference](https://raw.githubusercontent.com/ShiftLeftSecurity/scan-action/master/docs/readmeImages/vscode-pref.png?raw=true)
 
-> **NOTE:** This configuration can be specified for either the user or for the workspace. To set it for a particular workspace, choose the `Workspace` tab in the above settings screen.
+!!! note
+    This configuration can be specified for either the user or for the workspace. To set it for a particular workspace, choose the `Workspace` tab in the above settings screen.
 
 ## Troubleshooting
 
@@ -56,8 +57,8 @@ While working with large monorepo based repositories, configure the application 
   sudo usermod -aG docker $USER
   ```
 
-- Internet connectivity is required while loading the results for the first time. You might see the below error otherwise.
-
-```
-Unable to load schema from 'https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json': getaddrinfo ENOTFOUND raw.githubusercontent.com.
-```
+!!! warning
+    Internet connectivity is required while loading the results for the first time. You might see the below error otherwise.
+    ```
+    Unable to load schema from 'https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json': getaddrinfo ENOTFOUND raw.githubusercontent.com.
+    ```
