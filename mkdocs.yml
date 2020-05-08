@@ -49,6 +49,7 @@ nav:
   - "CI/CD Integrations":
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
       - "Github Actions": "integrations/github-actions.md"
+      - "Github Code scanning": "integrations/code-scan.md"
       - "GitLab CI": "integrations/gitlab.md"
       - "Google CloudBuild": "integrations/google-cloudbuild.md"
       - "Circle CI": "integrations/circleci.md"
