@@ -1,7 +1,5 @@
 # Python secure coding
 
-## Scan rules
-
 Scan uses bandit under-the-hood for scanning python projects. Following are some of the security checks performed and a description of remediation techniques and correct usages for certain modules.
 
 B301: pickle

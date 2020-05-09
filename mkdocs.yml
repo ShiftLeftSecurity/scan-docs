@@ -62,6 +62,7 @@ nav:
   - "Secure Development":
       - "Introduction": "secure-development/README.md"
       - "Python": "secure-development/python.md"
+      - "Go": "secure-development/go.md"
 
 markdown_extensions:
   - admonition
