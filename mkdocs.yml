@@ -4,7 +4,7 @@ site_author: Team ShiftLeft
 site_description: >-
   ShiftLeft Scan is a free open-source security tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any remote server! The product supports a range of integration options: from scanning every push via a git hook to scanning every build and pull-request in the CI/CD pipelines.
 # Repository
-repo_name: ShiftLeftSecurity/scan-docs
+repo_name: scan-docs
 repo_url: https://github.com/ShiftLeftSecurity/scan-docs
 edit_uri: ""
 
@@ -16,11 +16,11 @@ theme:
     - tabs
   name: material
   palette:
-    primary: indigo
-    accent: indigo
+    primary: teal
+    accent: deep orange
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Bookerly
+    code: Source Code Pro
   logo: images/scan-logo-dark.svg
   favicon: images/favicon.ico
 extra:
@@ -47,6 +47,7 @@ nav:
   - "Getting started": "getting-started/README.md"
   - "CI/CD Integrations": "integrations/README.md"
   - "CI/CD Integrations":
+      - "Introduction": "integrations/README.md"
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
       - "Github Actions": "integrations/github-actions.md"
       - "Github Code scanning": "integrations/code-scan.md"
@@ -55,7 +56,13 @@ nav:
       - "Circle CI": "integrations/circleci.md"
       - "Jenkins": "integrations/jenkins.md"
       - "Travis CI": "integrations/travis.md"
+      - "Tips & Tricks": "integrations/tips.md"
   - "IDE Integration": "integrations/vscode.md"
+  - "Secure Development": "secure-development/README.md"
+  - "Secure Development":
+      - "Introduction": "secure-development/README.md"
+      - "Python": "secure-development/python.md"
+      - "Go": "secure-development/go.md"
 
 markdown_extensions:
   - admonition

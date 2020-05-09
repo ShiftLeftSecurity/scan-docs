@@ -4,7 +4,11 @@
 
 .md-header,
 .md-tabs {
-  background: linear-gradient(to right, #5140e6 0, #11f2ff 100%);
+  background-color: #1C1C25;
+}
+
+.md-sidebar {
+  color: #FFFFFF;
 }
 
 .md-content {
@@ -12,13 +16,16 @@
 }
 
 .md-footer {
-  background-color: #272879;
-}
-
-.md-content {
-  max-width: calc(100% - 5.1rem * 2);
+  background-color: #23212E;
 }
 
 .md-main {
-  background-color: rgba(87, 37, 225, 0.2);
+  background-color: #312E3B;
+}
+
+.md-typeset img {
+  max-width: calc(100% - 1rem);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
