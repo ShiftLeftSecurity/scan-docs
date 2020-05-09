@@ -32,8 +32,10 @@ In addition, support for Infrastructure as Code (IaC) frameworks such as Ansible
 ## Start with your use case
 
 === "Secure development"
-    - Install Visual Studio Code [extension](integrations/vscode.md)
-=== "Scan GitHub repository"
+    - Read more about [secure development](secure-development/README.md) and best practices with scan for a range of languages
+=== "Scan GitHub"
     - Use scan with [GitHub code scanning](integrations/code-scan.md)
-=== "Scan during CI/CD"
+=== "Integrate with CI/CD"
     - Explore the available [CI/CD integrations](integrations/README.md)
+=== "Integrate with other tools"
+    - Read more about the [SARIF format](integrations/sarif.md) used by scan for integration with any existing tools such as Semmle
