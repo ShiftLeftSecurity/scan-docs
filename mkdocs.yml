@@ -75,3 +75,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
+
+google_analytics:
+  - UA-92418701-1
+  - auto
