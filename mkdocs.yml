@@ -49,6 +49,7 @@ nav:
   - "CI/CD Integrations":
       - "Introduction": "integrations/README.md"
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
+      - "Bitbucket Pipelines": "integrations/bitbucket.md"
       - "Github Actions": "integrations/github-actions.md"
       - "Github Code scanning": "integrations/code-scan.md"
       - "GitLab CI": "integrations/gitlab.md"

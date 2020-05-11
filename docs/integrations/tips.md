@@ -16,12 +16,12 @@ To override the prefix, simply pass the environment variable `WORKSPACE` with th
 export WORKSPACE="/home/shiftleft/src"
 
 # To specify url
-export WORKSPACE="https://github.com/ShiftLeftSecurity/cdxgen/blob/master"
+export WORKSPACE="https://github.com/ShiftLeftSecurity/sast-scan/blob/master"
 ```
 
 ## Config file
 
-scan can load configurations automatically from `.sastscanrc` in the repo root directory. This file is a json file containing the keys from [config.py](lib/config.py).
+scan can load configurations automatically from `.sastscanrc` in the repo root directory. This file is a json file containing the keys from [config.py](https://github.com/ShiftLeftSecurity/sast-scan/blob/master/lib/config.py).
 
 Below is an example.
 
