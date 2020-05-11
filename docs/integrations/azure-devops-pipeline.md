@@ -1,10 +1,10 @@
 ## Integration with Azure DevOps Pipelines
 
-ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedicated [extension](https://marketplace.visualstudio.com/items?itemName=shiftleftsecurity.sl-scan-results). To being integration,
+ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedicated [extension](https://marketplace.visualstudio.com/items?itemName=shiftleftsecurity.sl-scan-results). Below are the steps for integration with a yaml based pipeline:
 
-1. Install the extension to your Azure DevOps Organization. Ask your administrator for help if you do not have this permission.
+- Install the extension to your Azure DevOps Organization. Ask your administrator for help if you do not have this permission.
 
-2. Simply add the following snippet to your build configuration YAML file (Usually azure-pipelines.yml).
+- Simply add the following snippet to your build configuration YAML file (Usually azure-pipelines.yml).
 
 ```yaml
 - script: |
@@ -24,17 +24,17 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
     publishLocation: "Container"
 ```
 
-3. Trigger a build as normal and wait for it to complete.
+- Trigger a build as normal and wait for it to complete.
 
-4. From the Pipelines page, select the most recent run. You should see a tab called **ShiftLeft Scan** as shown below.
+- From the Pipelines page, select the most recent run. You should see a tab called **ShiftLeft Scan** as shown below.
 
    ![Scan Tab](img/scan-tab.png)
 
-5. Individual scan reports are shown as tabs as seen below. You can click on any tab to view and audit the different reports
+- Individual scan reports are shown as tabs as seen below. You can click on any tab to view and audit the different reports
 
    ![Reports](img/scan-report.png)
 
-6. Summary would also be available in the build console logs for easy reference
+- Summary would also be available in the build console logs for easy reference
 
    ![Console logs](img/build-log-summary.png)
 
