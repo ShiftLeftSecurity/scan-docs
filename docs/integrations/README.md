@@ -4,6 +4,7 @@ ShiftLeft Scan is purpose built for integration into your workflow. Here are a f
 
 ## Repository based platforms
 
+- [Integration with Bitbucket Pipelines](bitbucket.md)
 - [Integration as Github Actions](github-actions.md)
 - [Integration as Github Code scanning](code-scan.md)
 - [Integration with GitLab CI](gitlab.md)
