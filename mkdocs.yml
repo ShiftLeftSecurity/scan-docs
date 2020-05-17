@@ -65,6 +65,12 @@ nav:
       - "Introduction": "secure-development/README.md"
       - "Python": "secure-development/python.md"
       - "Go": "secure-development/go.md"
+      - "Java": "secure-development/java.md"
+  - "Secure Deployment": "secure-deployment/README.md"
+  - "Secure Deployment":
+      - "Introduction": "secure-deployment/README.md"
+      - "Kubernetes": "secure-deployment/k8s.md"
+      - "Terraform": "secure-deployment/terraform.md"
 
 markdown_extensions:
   - admonition
