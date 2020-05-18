@@ -29,6 +29,30 @@ Full list of supported languages is as follows:
 
 In addition, support for Infrastructure as Code (IaC) frameworks such as Ansible, AWS CloudFormation, Terraform, Kubernetes is also available. Scanning for more additional languages is in the works.
 
+## Language & supported scan types
+
+| Language | Credential Scan | SAST | Dependency Scan | License Audit | Build Breaker |
+|----------|---------------------|------|-----------------|---------------|---------------|
+| Salesforce Apex     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-check: |
+| Ansible     | :octicons-check: | :octicons-beaker: | :octicons-x: | :octicons-x: | :octicons-x: |
+| AWS CloudFormation     | :octicons-check: | :octicons-beaker: | :octicons-x: | :octicons-x: | :octicons-x: |
+| Bash     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-check: |
+| Go     | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-check: |
+| Java     | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-check: |
+| JSP     | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-check: |
+| Node.js     | :octicons-check: | :octicons-beaker: | :octicons-check: | :octicons-check: | :octicons-check: |
+| PL/SQL     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-check: |
+| Python     | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-check: | :octicons-check: |
+| Rust     | :octicons-check: | :octicons-x: | :octicons-check: | :octicons-x: | :octicons-x: |
+| Kubernetes     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-x: |
+| Terraform     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-check: |
+| Salesforce Visual Force     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-check: |
+| Apache Velocity     | :octicons-check: | :octicons-check: | :octicons-x: | :octicons-x: | :octicons-check: |
+| Kotlin     | :octicons-check: | :octicons-beaker: | :octicons-x: | :octicons-x: | :octicons-x: |
+| Yaml     | :octicons-check: | :octicons-beaker: | :octicons-x: | :octicons-x: | :octicons-x: |
+
+:octicons-beaker: - Experimental feature
+
 ## Start with your use case
 
 === "Secure development"
