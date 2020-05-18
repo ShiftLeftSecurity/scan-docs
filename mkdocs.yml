@@ -59,6 +59,7 @@ nav:
       - "Jenkins": "integrations/jenkins.md"
       - "Travis CI": "integrations/travis.md"
       - "Tips & Tricks": "integrations/tips.md"
+      - "SARIF Reports": "integrations/sarif.md"
   - "IDE Integration": "integrations/vscode.md"
   - "Secure Development": "secure-development/README.md"
   - "Secure Development":
@@ -82,6 +83,9 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 google_analytics:
   - UA-92418701-2
