@@ -193,3 +193,4 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | REPOSITORY_URL  | Repository URL. Useful in cases when scan is trigger from a non-git based source such as an s3 bucket                                  |
 | COMMIT_SHA      | Git commit hash. This is useful while scanning non-git based source                                                                    |
 | BRANCH          | Git branch name. Automatically detected for git repositories. Specify this while scanning a folder or svn repository                   |
+| CREDSCAN_DEPTH  | Number of commits to audit for secrets leak. Default 2                                                                                 |
