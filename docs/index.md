@@ -35,7 +35,7 @@ In addition, support for Infrastructure as Code (IaC) frameworks such as Ansible
 |----------|---------------------|------|-----------------|---------------|---------------|
 | Salesforce Apex     | ✓ | ✓ | ✕ | ✕ | ✓ |
 | Ansible     | ✓ | 🚧 | ✕ | ✕ | ✕ |
-| AWS CloudFormation     | ✓ | 🚧 | ✕ | ✕ | ✕ |
+| AWS CloudFormation     | ✓ | ✓ | ✕ | ✕ | ✕ |
 | Bash     | ✓ | ✓ | ✕ | ✕ | ✓ |
 | Go     | ✓ | ✓ | ✓ | ✕ | ✓ |
 | Java     | ✓ | ✓ | ✓ | ✓ | ✓ |
