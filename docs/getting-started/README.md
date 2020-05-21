@@ -107,50 +107,9 @@ Refer to the [readme](https://github.com/ShiftLeftSecurity/sast-scan#bundled-too
 
 ```
 $ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
-
-
-███████╗██╗  ██╗██╗███████╗████████╗██╗     ███████╗███████╗████████╗    ███████╗ ██████╗ █████╗ ███╗   ██╗
-██╔════╝██║  ██║██║██╔════╝╚══██╔══╝██║     ██╔════╝██╔════╝╚══██╔══╝    ██╔════╝██╔════╝██╔══██╗████╗  ██║
-███████╗███████║██║█████╗     ██║   ██║     █████╗  █████╗     ██║       ███████╗██║     ███████║██╔██╗ ██║
-╚════██║██╔══██║██║██╔══╝     ██║   ██║     ██╔══╝  ██╔══╝     ██║       ╚════██║██║     ██╔══██║██║╚██╗██║
-███████║██║  ██║██║██║        ██║   ███████╗███████╗██║        ██║       ███████║╚██████╗██║  ██║██║ ╚████║
-╚══════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝   ╚══════╝╚══════╝╚═╝        ╚═╝       ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝
-
-INFO [2020-04-02 12:36:39,608] Scanning /app using scan plugins ['credscan', 'java', 'bash', 'depscan']
-INFO [2020-04-02 12:36:39,609] ================================================================================
-WARN[2020-04-02T12:36:39Z] Exceeded depth limit (2)
-INFO[2020-04-02T12:36:39Z] no leaks found, skipping writing report
-INFO[2020-04-02T12:36:39Z] No leaks detected. 2 commits audited in 8 milliseconds 936 microseconds
-INFO [2020-04-02 12:36:39,625] ================================================================================
-INFO [2020-04-02 12:36:44,402] ================================================================================
-INFO [2020-04-02 12:36:46,198] ================================================================================
-INFO [2020-04-02 12:36:46,246] ================================================================================
-INFO [2020-04-02 12:36:46,403] ================================================================================
-INFO [2020-04-02 12:36:46,403] ⚡︎ Executing "cdxgen -r -t java -o /app/reports/bom-java.xml /app"
-
-===License scan findings===
-
-+--------------------------------+-----------+--------------+--------------------------------------------------+
-| Package                        | Version   | License Id   | License conditions                               |
-+================================+===========+==============+==================================================+
-| ch.qos.logback:logback-classic | 1.1.9     | EPL-1.0      | disclose-source, include-copyright, same-license |
-+--------------------------------+-----------+--------------+--------------------------------------------------+
-| ch.qos.logback:logback-core    | 1.1.9     | EPL-1.0      | disclose-source, include-copyright, same-license |
-+--------------------------------+-----------+--------------+--------------------------------------------------+
-| org.aspectj:aspectjweaver      | 1.8.9     | EPL-1.0      | disclose-source, include-copyright, same-license |
-+--------------------------------+-----------+--------------+--------------------------------------------------+
-INFO [2020-04-02 12:37:33,451] To use GitHub advisory source please set the environment variable GITHUB_TOKEN!
-INFO [2020-04-02 12:38:19,811] Performing regular scan for /app using plugin java
-INFO [2020-04-02 12:38:19,812] Scanning 67 oss dependencies for issues
-INFO [2020-04-02 12:38:29,415] No oss vulnerabilities detected ✅
-
-
-tool         description                             critical    high    medium    low  status
------------  ------------------------------------  ----------  ------  --------  -----  --------
-findsecbugs  Security audit by Find Security Bugs           8      16         0      0  ❌
-shellcheck   Shell script analysis by shellcheck            0       0         0      0  ✅
-pmd          Static code analysis by PMD                    0       0        19     35  ❌
 ```
+
+![Java Scan](images/scan-java.gif)
 
 ## Command-line arguments
 

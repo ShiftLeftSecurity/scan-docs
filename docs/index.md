@@ -10,6 +10,14 @@ ShiftLeft Scan is a free [open-source](https://github.com/ShiftLeftSecurity/sast
 !!! Summary
     Scan supports a range of integration options: from scanning the code on your IDE to scanning every build and pull-request in the CI/CD pipelines.
 
+## Sample invocation
+
+```
+$ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
+```
+
+![Java Scan](getting-started/images/scan-java.gif)
+
 ## Supported Languages & Frameworks
 
 Full list of supported languages is as follows:

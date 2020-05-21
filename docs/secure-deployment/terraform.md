@@ -1,6 +1,8 @@
 # Terraform secure coding
 
-Terraform scan is powered by tfsec which uses Hashicorp's AST library and checkov for improved analysis.
+Terraform scan is powered by tfsec which uses Hashicorp's AST library and checkov for improved analysis. Analysis can be effortlessly performed from anywhere from IDE to cli to CI pipelines.
+
+![Terraform scan](images/terraform-scan.gif)
 
 ## Best practices
 
