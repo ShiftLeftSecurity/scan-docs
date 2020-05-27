@@ -19,7 +19,7 @@ theme:
     primary: teal
     accent: deep orange
   font:
-    text: Bookerly
+    text: Muli, "Work Sans"
     code: Source Code Pro
   logo: images/scan-logo-dark.svg
   favicon: images/favicon.ico
