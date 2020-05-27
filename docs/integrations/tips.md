@@ -46,3 +46,21 @@ With a local config you can override the scan type and even configure the comman
 ## Use CI build reference as runGuid
 
 By setting the environment variable `SCAN_ID` you can re-use the CI build reference as the run guid for the reports. This is useful to reverse lookup the pipeline result based on the scan result.
+
+## Creating bash alias
+
+Add the below alias to your .bashrc or .zshrc file to simplify the scan command for terminal invocations.
+
+```bash
+scan() {
+    docker run --rm -e "WORKSPACE=$(pwd)" -e GITHUB_TOKEN -v "$(pwd):/app:cached" shiftleft/scan scan $*
+}
+```
+
+To perform scan with this alias, simply use the word scan
+
+```bash
+scan --type java
+```
+
+This approach seems to work with Linux, Mac and WSL 1 and 2 for Windows.
