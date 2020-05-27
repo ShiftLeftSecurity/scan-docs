@@ -1,4 +1,4 @@
-# Integration with d2iq dispatch
+# Integration with D2iQ dispatch
 
 Create a [Dispatchfile](https://docs.d2iq.com/ksphere/dispatch/1.1/pipeline-configuration/) in starlark, CUE, Json or Yaml format. The below example uses starlark format.
 
