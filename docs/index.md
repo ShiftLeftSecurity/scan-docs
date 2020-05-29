@@ -12,8 +12,16 @@ ShiftLeft Scan is a free [open-source](https://github.com/ShiftLeftSecurity/sast
 
 ## Sample invocation
 
+Easy one-liner command below:
+
+```bash
+sh <(curl https://slscan.sh)
 ```
-$ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
+
+The above command simply invokes the below docker run command.
+
+```bash
+docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
 ```
 
 ![Java Scan](getting-started/images/scan-java.gif)
@@ -45,7 +53,7 @@ In addition, support for Infrastructure as Code (IaC) frameworks such as Ansible
 | Ansible     | ✓ | 🚧 | ✕ | ✕ | ✕ |
 | AWS CloudFormation     | ✓ | ✓ | ✕ | ✕ | ✕ |
 | Bash     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Go     | ✓ | ✓ | ✓ | ✕ | ✓ |
+| Go     | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | ✓ | ✓ | ✓ | ✓ | ✓ |
 | JSP     | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | ✓ | 🚧 | ✓ | ✓ | ✓ |

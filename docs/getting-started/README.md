@@ -13,7 +13,11 @@ ShiftLeft Scan is distributed as a container [image](https://hub.docker.com/r/sh
 
 === "Linux and Mac"
     Invoking the `scan` command *detects* the language automatically and proceeds with a scan
-
+    Easy one-liner command.
+    ```bash
+    sh <(curl https://slscan.sh)
+    ```
+    <br>If you do not prefer such one-liners, use docker run command as shown below:
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
     ```
@@ -75,10 +79,18 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
 
 === "Credential scanning"
     ```bash
+    sh <(curl https://slscan.sh/credscan)
+    ```
+    Or if you prefer direct docker run command.
+    ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type credscan
     ```
 
 === "Python"
+    ```bash
+    sh <(curl https://slscan.sh/python)
+    ```
+    Or if you prefer direct docker run command.
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type python
     ```
@@ -86,7 +98,11 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
 === "Dependency scanning"
     To perform dependency scanning, create a personal access token with `read:packages` scope from settings -> developer settings on github.
     ![Reports](../integrations/img/github_token.png)
-    Then pass this value as `GITHUB_TOKEN` as shown.
+    Set this value as an environment variable called `GITHUB_TOKEN` and pass this value as shown.    
+    ```bash
+    sh <(curl https://slscan.sh/depscan)
+    ```
+    Or if you prefer direct docker run command.
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type depscan
     ```
