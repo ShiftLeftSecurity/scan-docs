@@ -1,4 +1,4 @@
-# Introduction
+# Scan SARIF format
 
 This document describes the output SARIF format emitted by `scan` tool for integration purposes.
 

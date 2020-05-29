@@ -45,7 +45,6 @@ extra_css:
 nav:
   - "index.md"
   - "Getting started": "getting-started/README.md"
-  - "CI/CD Integrations": "integrations/README.md"
   - "CI/CD Integrations":
       - "Introduction": "integrations/README.md"
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
@@ -53,21 +52,20 @@ nav:
       - "Github Actions": "integrations/github-actions.md"
       - "Github Code scanning": "integrations/code-scan.md"
       - "GitLab CI": "integrations/gitlab.md"
-      - "D2iq Dispatch": "integrations/dispatch.md"
+      - "D2iQ Dispatch": "integrations/dispatch.md"
       - "Google CloudBuild": "integrations/google-cloudbuild.md"
       - "Circle CI": "integrations/circleci.md"
       - "Jenkins": "integrations/jenkins.md"
       - "Travis CI": "integrations/travis.md"
       - "Tips & Tricks": "integrations/tips.md"
       - "SARIF Reports": "integrations/sarif.md"
+      - "SBOM Reports": "integrations/sbom.md"
   - "IDE Integration": "integrations/vscode.md"
-  - "Secure Development": "secure-development/README.md"
   - "Secure Development":
       - "Introduction": "secure-development/README.md"
       - "Python": "secure-development/python.md"
       - "Go": "secure-development/go.md"
       - "Java": "secure-development/java.md"
-  - "Secure Deployment": "secure-deployment/README.md"
   - "Secure Deployment":
       - "Introduction": "secure-deployment/README.md"
       - "AWS CloudFormation": "secure-deployment/aws.md"
