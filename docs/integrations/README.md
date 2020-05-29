@@ -23,7 +23,7 @@ ShiftLeft Scan is purpose built for integration into your workflow. Here are a f
 
 ## Cloud-native CI/CD
 
-- [d2iq Dispatch](dispatch.md)
+- [D2iQ Dispatch](dispatch.md)
 
 ## Others
 

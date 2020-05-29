@@ -7,7 +7,7 @@ ShiftLeft Scan is distributed as a container [image](https://hub.docker.com/r/sh
 ### Pre-requisites
 
 - Docker [desktop](https://www.docker.com/products/docker-desktop) in case of Windows and Mac
-- For linux [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
+- For linux, first [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
 
 ### Your first scan
 
