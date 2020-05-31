@@ -24,7 +24,7 @@ Install podman using the below the commands as mentioned [here](https://podman.i
 sudo sh -c "echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/ /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:testing.list"
 curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/testing/xUbuntu_${VERSION_ID}/Release.key | sudo apt-key add -
 sudo apt-get update -qq
-sudo apt-get -qq -y install podman build-essential
+sudo apt-get -qq -y install podman build-essential fuse-overlayfs
 ```
 
 ### Configuring podman
@@ -61,4 +61,46 @@ If you do not prefer alias `docker` then use `podman` in the above command.
 
 ```bash
 podman run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
+```
+
+## Performance improvements
+
+### Configure rootless mode
+
+Follow [these instructions](https://github.com/containers/libpod/blob/master/docs/tutorials/rootless_tutorial.md) to setup rootless mode for podman. Using `crun` along with with `fuse-overlayfs` leads to noticeable improvements.
+
+```bash
+sudo apt install -y libyajl2 libyajl-dev
+```
+
+## Troubleshooting
+
+### cannot stat /root/.config/containers/storage.conf error
+
+WIP
+
+### Podman: there might not be enough IDs available in the namespace error
+
+```bash
+podman unshare cat /proc/self/uid_map
+```
+
+If you get the below output then proceed with setting setuid bits using chmod as shown:
+
+```bash
+    0       1000          1
+```
+
+```bash
+sudo chmod u+s $(which newuidmap)
+sudo chmod u+s $(which newgidmap)
+podman system migrate
+podman unshare cat /proc/self/uid_map
+```
+
+You should now get
+
+```bash
+    0       1000          1
+    1     100000      65536
 ```
