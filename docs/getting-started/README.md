@@ -98,7 +98,7 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
 === "Dependency scanning"
     To perform dependency scanning, create a personal access token with `read:packages` scope from settings -> developer settings on github.
     ![Reports](../integrations/img/github_token.png)
-    Set this value as an environment variable called `GITHUB_TOKEN` and pass this value as shown.    
+    Set this value as an environment variable called `GITHUB_TOKEN` and pass this value as shown.
     ```bash
     sh <(curl https://slscan.sh/depscan)
     ```
@@ -170,3 +170,5 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | BRANCH            | Git branch name. Automatically detected for git repositories. Specify this while scanning a folder or svn repository                   |
 | CREDSCAN_DEPTH    | Number of commits to audit for secrets leak. Default 2                                                                                 |
 | CREDSCAN_TIMEOUT  | Timeout for credscan. Default 2m                                                                                 |
+| DISABLE_TELEMETRY | Set to true or 1 to disable telemetry submission to the default url which is https://telemetry.appthreat.io/track |
+| TELEMETRY_URL | Set this value to a URL that will receive the telemetry json from scan invocations. Refer to [telemetry](../integrations/telemetry.md) |
