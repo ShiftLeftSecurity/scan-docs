@@ -77,5 +77,7 @@ In addition, support for Infrastructure as Code (IaC) frameworks such as Ansible
     - Use scan with [GitHub code scanning](integrations/code-scan.md)
 === "Integrate with CI/CD"
     - Explore the available [CI/CD integrations](integrations/README.md)
-=== "Integrate with other tools"
-    - Read more about the [SARIF format](integrations/sarif.md) used by scan for integration with any existing tools such as Semmle
+=== "Advanced use cases"
+    - Read more about the [SARIF format](integrations/sarif.md) used by scan for integration with any SARIF compliant SAST tool
+    - Learn about the [Software Bill-of-Materials](integrations/sbom.md) report produced by scan
+    - Learn about rolling out a [telemetry service](integrations/telemetry.md) to aggregate and audit scan invocations
