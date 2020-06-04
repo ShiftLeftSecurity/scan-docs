@@ -31,7 +31,8 @@
 }
 
 :root {
-  --md-default-fg-color--light: #6C6B73;
+  --md-default-fg-color--light: #5C5B64;
+  --md-default-fg-color--lighter: #6C6B73;
   --md-primary-fg-color: rgb(0, 128, 0);
   --md-secondary-fg-color: rgb(141, 87, 217);
 }
