@@ -29,3 +29,17 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+:root {
+  --md-default-fg-color--light: #6C6B73;
+  --md-primary-fg-color: rgb(0, 128, 0);
+  --md-secondary-fg-color: rgb(141, 87, 217);
+}
+
+.md-tabs__link--active {
+  border-bottom: rgb(0, 128, 0);
+  border-bottom-width: 2px;
+  border-top-width: 0px;
+  border-bottom-style: solid;
+  padding-bottom: 8px;
+}

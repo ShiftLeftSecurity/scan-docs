@@ -15,9 +15,6 @@ theme:
     - instant
     - tabs
   name: material
-  palette:
-    primary: teal
-    accent: deep orange
   font:
     text: Muli, "Work Sans"
     code: Source Code Pro
@@ -45,6 +42,7 @@ extra_css:
 nav:
   - "index.md"
   - "Getting started": "getting-started/README.md"
+  - "Use Cases": "getting-started/use-cases.md"
   - "CI/CD Integrations":
       - "Introduction": "integrations/README.md"
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"
