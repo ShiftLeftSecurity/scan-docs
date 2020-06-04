@@ -30,42 +30,25 @@ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
 
 Full list of supported languages is as follows:
 
-- Salesforce Apex
-- Bash
-- Go
-- Java
-- JSP
-- Node.js
-- Oracle PL/SQL
-- Python
-- Rust (Dependency and Licence scan alone)
-- Terraform
-- Salesforce Visual Force
-- Apache Velocity
-
-In addition, support for Infrastructure as Code (IaC) frameworks such as Ansible, AWS CloudFormation, Terraform, Kubernetes is also available. Scanning for more additional languages is in the works.
-
-## Language & supported scan types
-
-| Language | Credential Scan | SAST | Dependency Scan | License Audit | Build Breaker |
-|----------|---------------------|------|-----------------|---------------|---------------|
-| Salesforce Apex     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Ansible     | ✓ | 🚧 | ✕ | ✕ | ✕ |
-| AWS CloudFormation     | ✓ | ✓ | ✕ | ✕ | ✕ |
-| Bash     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Go     | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Java     | ✓ | ✓ | ✓ | ✓ | ✓ |
-| JSP     | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Node.js     | ✓ | 🚧 | ✓ | ✓ | ✓ |
-| PL/SQL     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Python     | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Rust     | ✓ | ✕ | ✓ | ✕ | ✕ |
-| Kubernetes     | ✓ | ✓ | ✕ | ✕ | ✕ |
-| Terraform     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Salesforce Visual Force     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Apache Velocity     | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Kotlin     | ✓ | 🚧 | ✕ | ✕ | ✕ |
-| Yaml     | ✓ | 🚧 | ✕ | ✕ | ✕ |
+| Language | Scan Type (--type) | Credential Scan | SAST | Dependency Scan | License Audit | Build Breaker |
+|----------|-----------|---------------------|------|-----------------|---------------|---------------|
+| Salesforce Apex     | apex | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Ansible     | ansible | ✓ | 🚧 | ✕ | ✕ | ✕ |
+| AWS CloudFormation     | aws | ✓ | ✓ | ✕ | ✕ | ✕ |
+| Bash     | bash | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
+| JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
+| PL/SQL     | plsql | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Rust     | rust | ✓ | ✕ | ✓ | ✕ | ✕ |
+| Kubernetes     | kubernetes | ✓ | ✓ | ✕ | ✕ | ✕ |
+| Terraform     | terraform | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Salesforce Visual Force    | vf | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Apache Velocity    | vm | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Kotlin    | kotlin | ✓ | 🚧 | ✕ | ✕ | ✕ |
+| Yaml     | yaml | ✓ | 🚧 | ✕ | ✕ | ✕ |
 
 🚧 - Work-in-progress feature
 
