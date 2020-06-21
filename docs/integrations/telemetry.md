@@ -10,7 +10,7 @@ Telemetry is a strongly contested feature in the open-source and sometimes even 
 To disable telemetry during scan invocations set the environment variable `DISABLE_TELEMETRY` to true. Eg:
 
 ```bash
-docker run --rm -e "WORKSPACE=${PWD}" -e "DISABLE_TELEMETRY=true" -v "$PWD:/app:cached" shiftleft/sast-scan scan
+docker run --rm -e "WORKSPACE=${PWD}" -e "DISABLE_TELEMETRY=true" -v "$PWD:/app" shiftleft/sast-scan scan
 ```
 
 ## Rollout your own service

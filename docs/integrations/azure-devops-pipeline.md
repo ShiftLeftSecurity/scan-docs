@@ -9,8 +9,8 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
 ```yaml
 - script: |
     docker run \
-      -v "$(Build.SourcesDirectory):/app:cached" \
-      -v "$(Build.ArtifactStagingDirectory):/reports:cached" \
+      -v "$(Build.SourcesDirectory):/app" \
+      -v "$(Build.ArtifactStagingDirectory):/reports" \
       shiftleft/sast-scan scan --src /app \
       --out_dir /reports/CodeAnalysisLogs
   displayName: "Perform ShiftLeft Scan"
@@ -77,8 +77,8 @@ You can improve the quality of the dependency scan (`--type depscan`) by passing
 - script: |
     docker run \
       -e "GITHUB_TOKEN=$(GITHUB_TOKEN)" \
-      -v "$(Build.SourcesDirectory):/app:cached" \
-      -v "$(Build.ArtifactStagingDirectory):/reports:cached" \
+      -v "$(Build.SourcesDirectory):/app" \
+      -v "$(Build.ArtifactStagingDirectory):/reports" \
       shiftleft/sast-scan scan --src /app \
       --out_dir /reports/CodeAnalysisLogs
   displayName: "Perform ShiftLeft Scan"
