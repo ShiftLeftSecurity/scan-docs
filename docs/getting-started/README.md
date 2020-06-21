@@ -19,44 +19,44 @@ ShiftLeft Scan is distributed as a container [image](https://hub.docker.com/r/sh
     ```
     <br>If you do not prefer such one-liners, use docker run command as shown below:
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan
     ```
 
     For project types such as Java, go compile the projects prior to scanning. Or pass `--build` to attempt automatic build.
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --build
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --build
     ```
 
     For scanning a specific language project, use the `--type` option. For example, for scanning a python project,
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type python
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type python
     ```
 
 === "Windows"
     On Windows use `%cd%` instead of \$PWD to run the scan with Command prompt
 
     ```cmd
-    docker run --rm -e "WORKSPACE=%cd%" -v "%cd%:/app:cached" shiftleft/sast-scan scan --src /app --type python
+    docker run --rm -e "WORKSPACE=%cd%" -v "%cd%:/app" shiftleft/sast-scan scan --src /app --type python
     ```
 
     powershell and powershell core
 
     ```powershell
-    docker run --rm -e "WORKSPACE=$(pwd)" -e "GITHUB_TOKEN=$env:GITHUB_TOKEN" -v "$(pwd):/app:cached" shiftleft/scan scan
+    docker run --rm -e "WORKSPACE=$(pwd)" -e "GITHUB_TOKEN=$env:GITHUB_TOKEN" -v "$(pwd):/app" shiftleft/scan scan
     ```
 
     WSL bash
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app:cached" shiftleft/scan scan
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan
     ```
 
     git-bash
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "/$PWD:/app:cached" shiftleft/scan scan
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "/$PWD:/app" shiftleft/scan scan
     ```
 
     Don't forget the slash (/) before \$PWD for git-bash!
@@ -83,7 +83,7 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type credscan
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type credscan
     ```
 
 === "Python"
@@ -92,7 +92,7 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type python
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type python
     ```
 
 === "Dependency scanning"
@@ -104,17 +104,17 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type depscan
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type depscan
     ```
 
 === "Node.js"
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type nodejs
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type nodejs
     ```
 
 === "go"
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan --src /app --type go
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type go
     ```
 
 Refer to the [readme](https://github.com/ShiftLeftSecurity/sast-scan#bundled-tools) for a complete list of all scan types.

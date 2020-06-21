@@ -53,7 +53,7 @@ Add the below alias to your .bashrc or .zshrc file to simplify the scan command 
 
 ```bash
 scan() {
-    docker run --rm -e "WORKSPACE=$(pwd)" -e GITHUB_TOKEN -v "$(pwd):/app:cached" shiftleft/scan scan $*
+    docker run --rm -e "WORKSPACE=$(pwd)" -e GITHUB_TOKEN -v "$(pwd):/app" shiftleft/scan scan $*
 }
 ```
 

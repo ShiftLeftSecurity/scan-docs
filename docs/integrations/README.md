@@ -37,7 +37,7 @@ For CI/CD systems not listed here (TeamCity, GoCD etc), here are few things you 
     This approach may not work reliably and should be used only as the last resort. Use the docker run command mentioned in the [Getting started](../getting-started/README.md)
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app:cached" shiftleft/sast-scan scan
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan
     ```
 
     In some CI systems, running docker command might be supported but might need some configuration to explicitly turn it on. For instance, Travis requires a service `docker` to enable docker support.
