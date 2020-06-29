@@ -41,6 +41,7 @@ Full list of supported languages is as follows:
 | JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
 | PL/SQL     | plsql | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Rust     | rust | ✓ | ✕ | ✓ | ✕ | ✕ |
 | Kubernetes     | kubernetes | ✓ | ✓ | ✕ | ✕ | ✕ |
