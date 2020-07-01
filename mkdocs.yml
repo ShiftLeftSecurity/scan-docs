@@ -62,6 +62,7 @@ nav:
   - "IDE Integration": "integrations/vscode.md"
   - "Secure Development":
       - "Introduction": "secure-development/README.md"
+      - "OWASP Top 10": "secure-development/owasp.md"
       - "Python": "secure-development/python.md"
       - "Go": "secure-development/go.md"
       - "Java": "secure-development/java.md"

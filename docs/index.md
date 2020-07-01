@@ -32,24 +32,24 @@ Full list of supported languages is as follows:
 
 | Language | Scan Type (--type) | Credential Scan | SAST | Dependency Scan | License Audit | Build Breaker |
 |----------|-----------|---------------------|------|-----------------|---------------|---------------|
-| Salesforce Apex     | apex | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Ansible     | ansible | ✓ | 🚧 | ✕ | ✕ | ✕ |
-| AWS CloudFormation     | aws | ✓ | ✓ | ✕ | ✕ | ✕ |
-| Bash     | bash | ✓ | ✓ | ✕ | ✕ | ✓ |
+| Salesforce Apex     | apex | ✓ | ✓ | | | ✓ |
+| Ansible     | ansible | ✓ | 🚧 | | | |
+| AWS CloudFormation     | aws | ✓ | ✓ | | | |
+| Bash     | bash | ✓ | ✓ | | | ✓ |
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
 | JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
-| PL/SQL     | plsql | ✓ | ✓ | ✕ | ✕ | ✓ |
+| PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
 | Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Rust     | rust | ✓ | ✕ | ✓ | ✕ | ✕ |
-| Kubernetes     | kubernetes | ✓ | ✓ | ✕ | ✕ | ✕ |
-| Terraform     | terraform | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Salesforce Visual Force    | vf | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Apache Velocity    | vm | ✓ | ✓ | ✕ | ✕ | ✓ |
-| Kotlin    | kotlin | ✓ | 🚧 | ✕ | ✕ | ✕ |
-| Yaml     | yaml | ✓ | 🚧 | ✕ | ✕ | ✕ |
+| Rust     | rust | ✓ | | ✓ | | |
+| Kubernetes     | kubernetes | ✓ | ✓ | | | |
+| Terraform     | terraform | ✓ | ✓ | | | ✓ |
+| Salesforce Visual Force    | vf | ✓ | ✓ | | | ✓ |
+| Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
+| Kotlin    | kotlin | ✓ | 🚧 | | | |
+| Yaml     | yaml | ✓ | 🚧 | | | |
 
 🚧 - Work-in-progress feature
 
