@@ -108,13 +108,43 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
 
 === "Node.js"
+    Specify `nodejs` as the type.
+
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type nodejs
     ```
 
-=== "go"
+    To include dependency scanning in addition to security audits include `depscan` as shown.
+
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type go
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type nodejs,depscan
+    ```
+
+=== "go"
+    Specify `go` as the type. To enable automatic build pass `--build` as a parameter.
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type go --build
+    ```
+
+=== "Kotlin"
+    Specify `kotlin` as the type. To enable automatic build pass `--build` as a parameter.
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type kotlin --build
+    ```
+
+=== "PHP"
+    Composer based projects are supported quite well by scan. For legacy projects, scan would attempt to create a `composer.json` file on-the-fly. Specify `php` as the type. To enable automatic build pass `--build` as a parameter.
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type php --build
+    ```
+
+    To include dependency scanning in addition to security audits include `depscan` as shown.
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type php,depscan --build
     ```
 
 Refer to the [readme](https://github.com/ShiftLeftSecurity/sast-scan#bundled-tools) for a complete list of all scan types.

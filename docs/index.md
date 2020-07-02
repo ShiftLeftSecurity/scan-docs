@@ -21,7 +21,7 @@ sh <(curl https://slscan.sh)
 The above command simply invokes the below docker run command.
 
 ```bash
-docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
+docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --build
 ```
 
 ![Java Scan](getting-started/images/scan-java.gif)
@@ -38,6 +38,7 @@ Full list of supported languages is as follows:
 | Bash     | bash | ✓ | ✓ | | | ✓ |
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
 | JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
@@ -48,7 +49,6 @@ Full list of supported languages is as follows:
 | Terraform     | terraform | ✓ | ✓ | | | ✓ |
 | Salesforce Visual Force    | vf | ✓ | ✓ | | | ✓ |
 | Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
-| Kotlin    | kotlin | ✓ | 🚧 | | | |
 | Yaml     | yaml | ✓ | 🚧 | | | |
 
 🚧 - Work-in-progress feature
