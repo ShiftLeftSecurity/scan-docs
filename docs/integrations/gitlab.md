@@ -6,7 +6,7 @@ ShiftLeft Scan scanning is available for all GitLab CI users including the free 
 job:
   image: shiftleft/sast-scan:latest
   script:
-    - scan
+    - scan --build
 ```
 
 To pass additional environment variables use the `environment` section as described [here](https://docs.gitlab.com/ee/ci/variables/where_variables_can_be_used.html)

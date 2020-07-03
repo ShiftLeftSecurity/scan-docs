@@ -5,7 +5,7 @@ Here is a minimal configuration to setup scan with Google CloudBuild,
 ```yaml
 steps:
   - name: shiftleft/sast-scan
-    entrypoint: scan
+    entrypoint: scan --build
 ```
 
 Build the project before scanning and substitute for Workspace and GitHub package lookups.

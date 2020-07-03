@@ -11,7 +11,7 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
     docker run \
       -v "$(Build.SourcesDirectory):/app" \
       -v "$(Build.ArtifactStagingDirectory):/reports" \
-      shiftleft/sast-scan scan --src /app \
+      shiftleft/sast-scan scan --src /app --build \
       --out_dir /reports/CodeAnalysisLogs
   displayName: "Perform ShiftLeft Scan"
   continueOnError: "true"

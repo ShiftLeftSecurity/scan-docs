@@ -18,6 +18,7 @@ An advanced configuration including the ability to customize the WORKSPACE URL a
   env:
     WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SCAN_AUTO_BUILD: true
   with:
     output: reports
 - name: Upload scan reports
