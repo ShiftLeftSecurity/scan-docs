@@ -1,6 +1,6 @@
 # Getting Started
 
-ShiftLeft Scan is distributed as a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and hence it is easy to install, setup in the CI or locally, and then to run it.
+ShiftLeft Scan is distributed as both a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and as an [AppImage executable](https://github.com/ShiftLeftSecurity/sast-scan/releases). It is therefore easy to install, setup in the CI or locally, and then to run it.
 
 ## Scanning the Application Locally
 
@@ -156,6 +156,31 @@ $ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
 ```
 
 ![Java Scan](images/scan-java.gif)
+
+## Scanning using AppImage on Linux
+
+Scan is also distributed in AppImage format which is supported by major Linux distributions. To reduce the size, AppImage does not include Java Runtime (JRE) as well as tools such as Apache Maven and Gradle. All other features of scan are available and should work without any limitations.
+
+### Easy installation
+
+```bash
+sh <(curl https://slscan.sh/install)
+```
+
+### Manual installation
+
+- Download scan AppImage from GitHub releases
+- Enable execute permission
+
+```bash
+sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.7.0/scan -O /usr/local/bin/scan
+sudo chmod +x /usr/local/bin/scan
+```
+- Use from the terminal
+
+```bash
+scan -t nodejs
+```
 
 ## Command-line arguments
 

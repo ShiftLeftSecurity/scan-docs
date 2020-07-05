@@ -26,6 +26,18 @@ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --bu
 
 ![Java Scan](getting-started/images/scan-java.gif)
 
+Scan is also available as an AppImage. Please download the latest version from GitHub [releases](https://github.com/ShiftLeftSecurity/sast-scan/releases) or use the one-liner command below.
+
+```bash
+sh <(curl https://slscan.sh/install)
+```
+
+```bash
+wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.7.0/scan
+chmod +x scan
+./scan -t nodejs
+```
+
 ## Supported Languages & Frameworks
 
 Full list of supported languages is as follows:
@@ -34,7 +46,7 @@ Full list of supported languages is as follows:
 |----------|-----------|---------------------|------|-----------------|---------------|---------------|
 | Salesforce Apex     | apex | ✓ | ✓ | | | ✓ |
 | Ansible     | ansible | ✓ | 🚧 | | | |
-| AWS CloudFormation     | aws | ✓ | ✓ | | | |
+| AWS CloudFormation     | aws | ✓ | ✓ | | | ✓ |
 | Bash     | bash | ✓ | ✓ | | | ✓ |
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -45,7 +57,7 @@ Full list of supported languages is as follows:
 | Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Rust     | rust | ✓ | | ✓ | | |
-| Kubernetes     | kubernetes | ✓ | ✓ | | | |
+| Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
 | Terraform     | terraform | ✓ | ✓ | | | ✓ |
 | Salesforce Visual Force    | vf | ✓ | ✓ | | | ✓ |
 | Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
