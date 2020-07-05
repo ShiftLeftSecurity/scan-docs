@@ -161,7 +161,13 @@ $ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
 
 Scan is also distributed in AppImage format which is supported by major Linux distributions. To reduce the size, AppImage does not include Java Runtime (JRE) as well as tools such as Apache Maven and Gradle. All other features of scan are available and should work without any limitations.
 
-### Pre-requisites
+### Easy installation
+
+```bash
+sh <(curl https://slscan.sh/install)
+```
+
+### Manual installation
 
 - Download scan AppImage from GitHub releases
 - Enable execute permission

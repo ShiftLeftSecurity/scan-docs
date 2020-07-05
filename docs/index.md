@@ -26,7 +26,11 @@ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --bu
 
 ![Java Scan](getting-started/images/scan-java.gif)
 
-Scan is also available as an AppImage. Please download the latest version from GitHub [releases](https://github.com/ShiftLeftSecurity/sast-scan/releases).
+Scan is also available as an AppImage. Please download the latest version from GitHub [releases](https://github.com/ShiftLeftSecurity/sast-scan/releases) or use the one-liner command below.
+
+```bash
+sh <(curl https://slscan.sh/install)
+```
 
 ```bash
 wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.7.0/scan
