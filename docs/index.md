@@ -51,6 +51,8 @@ Full list of supported languages is as follows:
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Scala    | kotlin | ✓ | ✓ |  |  | ✓ |
+| Groovy    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
 | JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
