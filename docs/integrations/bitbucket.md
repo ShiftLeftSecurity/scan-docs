@@ -43,7 +43,7 @@ pipelines:
   default:
     - step:
         script:
-          - scan --build
+          - scan --build --no-error
           - zip -r scan-reports.zip reports/
           - pipe: atlassian/bitbucket-upload-file:0.1.8
             variables:
