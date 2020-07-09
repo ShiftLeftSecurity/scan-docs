@@ -22,12 +22,34 @@ pipelines:
 Bitbucket pipelines has a pipe called `Bitbucket upload file` which can be used to store the scan reports for reference and auditing purposes. For example, assuming that scan reports were produced in a directory called `reports`, the below snippet can be used to upload the html file.
 
 ```yaml
-- pipe: atlassian/bitbucket-upload-file:0.1.4
-    variables:
-      BITBUCKET_USERNAME: $BITBUCKET_USERNAME
-      BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
-      FILENAME: 'reports/source-report.html'
+- pipe: atlassian/bitbucket-upload-file:0.1.8
+  variables:
+    BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+    BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+    FILENAME: 'reports/source-report.html'
 ```
 
 !!! Note
-    This pipe requires an app password with `Repositories write and read` permissions.
+    This pipe requires an app password with `Repositories write and read` permissions. To create this password, go to [account settings](https://bitbucket.org/account/settings/) and click on `App passwords` and then `Create app password`.
+
+    ![Bitbucket settings](img/bitbucket-password.png)
+
+The upload file pipe is quite basic supporting only one file. It is hence recommended to zip the `reports` directory to upload a single zip file containing all the reports. The full configuration is shown below:
+
+```yaml
+image: shiftleft/scan:latest
+
+pipelines:
+  default:
+    - step:
+        script:
+          - scan --build
+          - zip -r scan-reports.zip reports/
+          - pipe: atlassian/bitbucket-upload-file:0.1.8
+            variables:
+              BITBUCKET_USERNAME: $BITBUCKET_USERNAME
+              BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+              FILENAME: 'scan-reports.zip'
+```
+
+Follow this [link](https://bitbucket.org/prabhusl/helloshiftleft/src/master/bitbucket-pipelines.yml) for a full working pipeline.

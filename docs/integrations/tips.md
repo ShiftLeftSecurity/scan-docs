@@ -23,22 +23,37 @@ export WORKSPACE="https://github.com/ShiftLeftSecurity/sast-scan/blob/master"
 
 scan can load configurations automatically from `.sastscanrc` in the repo root directory. This file is a json file containing the keys from [config.py](https://github.com/ShiftLeftSecurity/sast-scan/blob/master/lib/config.py).
 
-Below is an example.
+Below is an example for overriding the default build breaker logic.
 
 ```json
 {
-  "scan_type": "java,credscan,bash",
-  "scan_tools_args_map": {
-    "credscan": [
-      "gitleaks",
-      "--branch=master",
-      "--repo-path=%(src)s",
-      "--redact",
-      "--report=%(report_fname_prefix)s.json",
-      "--report-format=json"
-    ]
+  "build_break_rules": {
+    "default": {"max_critical": 2, "max_high": 5, "max_medium": 15}
   }
 }
+```
+
+Any number of vulnerabilities over and above this limit would cause the build to fail. It is also possible to specify a tool specific rule.
+
+```json
+{
+  "build_break_rules": {
+    "default": {"max_critical": 2, "max_high": 5, "max_medium": 15},
+    "Security audit for PHP": {"max_critical": 2, "max_high": 50, "max_medium": 500}
+  }
+}
+```
+
+With this rule, the tool `Security audit for PHP` would mark the build as success as shown.
+
+```bash
+SAST Scan Summary
+╔═════════════════════════════════╤══════════╤══════╤════════╤═════╤════════╗
+║ Tool                            │ Critical │ High │ Medium │ Low │ Status ║
+╟─────────────────────────────────┼──────────┼──────┼────────┼─────┼────────╢
+║ Security audit for PHP          │        0 │    0 │    309 │   0 │   ✅   ║
+║ Security taint analysis for PHP │      130 │    0 │      0 │   0 │   ❌   ║
+╚═════════════════════════════════╧══════════╧══════╧════════╧═════╧════════╝
 ```
 
 With a local config you can override the scan type and even configure the command line args for the tools as shown.
