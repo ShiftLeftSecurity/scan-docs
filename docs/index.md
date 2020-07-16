@@ -32,8 +32,10 @@ Scan is also available as an AppImage. Please download the latest version from G
 sh <(curl https://slscan.sh/install)
 ```
 
+Expanded version of the one-liner command.
+
 ```bash
-wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.7.0/scan
+wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.9/scan
 chmod +x scan
 ./scan -t nodejs
 ```
@@ -51,8 +53,8 @@ Full list of supported languages is as follows:
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Scala    | kotlin | ✓ | ✓ |  |  | ✓ |
-| Groovy    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Scala    | scala | ✓ | ✓ |  |  | ✓ |
+| Groovy    | groovy | ✓ | ✓ | ✓ | ✓ | ✓ |
 | JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
