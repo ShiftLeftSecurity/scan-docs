@@ -173,7 +173,7 @@ sh <(curl https://slscan.sh/install)
 - Enable execute permission
 
 ```bash
-sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.7.0/scan -O /usr/local/bin/scan
+sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.9/scan -O /usr/local/bin/scan
 sudo chmod +x /usr/local/bin/scan
 ```
 - Use from the terminal

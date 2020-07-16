@@ -20,6 +20,7 @@ ShiftLeft Scan is purpose built for integration into your workflow. Here are a f
 - [Integration with Circle CI](circleci.md)
 - [Integration with Jenkins CI](jenkins.md)
 - [Integration with Travis CI](travis.md)
+- [Integration with TeamCity](teamcity.md)
 
 ## Cloud-native CI/CD
 

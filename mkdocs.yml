@@ -55,6 +55,7 @@ nav:
       - "Circle CI": "integrations/circleci.md"
       - "Jenkins": "integrations/jenkins.md"
       - "Travis CI": "integrations/travis.md"
+      - "TeamCity": "integrations/teamcity.md"
       - "Telemetry": "integrations/telemetry.md"
       - "Tips & Tricks": "integrations/tips.md"
       - "SARIF Reports": "integrations/sarif.md"
