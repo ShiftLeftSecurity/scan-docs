@@ -7,7 +7,10 @@ ShiftLeft Scan is distributed as both a container [image](https://hub.docker.com
 ### Pre-requisites
 
 - Docker [desktop](https://www.docker.com/products/docker-desktop) in case of Windows and Mac
-- For linux, first [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
+- For Linux, first [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
+
+!!! Tip
+    Scan works quite well with [podman](https://podman.io/) in rootless mode on both Linux and on Windows with WSL2!
 
 ### Your first scan
 
