@@ -4,7 +4,7 @@ This document describes the output Software Bill-of-Materials (SBOM) xml format 
 
 ## SBOM specification
 
-Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requisite for performing dependency scanning (`depscan`). This file is an xml file compatible with [CycloneDX 1.1 specification](https://cyclonedx.org/docs/1.1/) with a `bom` prefix. Some example bom files can be found [here](https://github.com/AppThreat/dep-scan/tree/master/test/data)
+Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requisite for performing dependency scanning (`depscan`). This file is an xml file compatible with [CycloneDX 1.2 specification](https://cyclonedx.org/docs/1.2/) with a `bom` prefix. Some example bom files can be found [here](https://github.com/AppThreat/dep-scan/tree/master/test/data)
 
 !!! Note
     SBOM file will not be generated if scan is invoked with a specific type argument. Eg: `--type java`.<br>
@@ -16,10 +16,10 @@ Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requi
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<bom xmlns="http://cyclonedx.org/schema/bom/1.1" serialNumber="urn:uuid:a4b5715e-8489-4855-8a3c-bafe5ddf7daa" version="1">
+<bom xmlns="http://cyclonedx.org/schema/bom/1.2" serialNumber="urn:uuid:a4b5715e-8489-4855-8a3c-bafe5ddf7daa" version="1">
 ```
 
-- xmlns: Set to `http://cyclonedx.org/schema/bom/1.1`
+- xmlns: Set to `http://cyclonedx.org/schema/bom/1.2`
 - serialNumber: Random UUID to uniquely represent the BOM file
 - version: Set to `1` always
 
