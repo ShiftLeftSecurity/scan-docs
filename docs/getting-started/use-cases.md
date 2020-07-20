@@ -172,7 +172,7 @@ if __name__ == "__main__":
 
 ## Software Bill-of-Materials Report
 
-Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requisite for performing dependency scanning (`depscan`). This file is an xml file compatible with [CycloneDX 1.1 specification](https://cyclonedx.org/docs/1.1/) with a `bom` prefix. Refer to the [SBOM page](../integrations/sbom.md) for further information.
+Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requisite for performing dependency scanning (`depscan`). This file is an xml file compatible with [CycloneDX 1.2 specification](https://cyclonedx.org/docs/1.2/) with a `bom` prefix. Refer to the [SBOM page](../integrations/sbom.md) for further information.
 
 There are quite a number of scenarios why this report might be required by your security team:
 
@@ -185,7 +185,7 @@ In the below example, we use XSLT and a bash command called `xsltproc` to produc
 - Create an XSLT file with the below and save it as `bom.xslt`
 
     ```xslt
-    <xsl:stylesheet version="1.0" xmlns:bom="http://cyclonedx.org/schema/bom/1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:stylesheet version="1.0" xmlns:bom="http://cyclonedx.org/schema/bom/1.2" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <xsl:output method="text" />
     <xsl:template match="/">
