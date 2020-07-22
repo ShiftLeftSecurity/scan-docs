@@ -60,7 +60,8 @@ Full list of supported languages is as follows:
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
 | Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Rust     | rust | ✓ | | ✓ | | |
+| Ruby     | ruby | ✓ | | ✓ | ✓ | |
+| Rust     | rust | ✓ | | ✓ | ✓ | |
 | Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
 | Terraform     | terraform | ✓ | ✓ | | | ✓ |
 | Salesforce Visual Force    | vf | ✓ | ✓ | | | ✓ |
