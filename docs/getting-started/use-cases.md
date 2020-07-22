@@ -17,7 +17,8 @@ Here are some use cases, where scan can help with your DevSecOps process and sec
 The steps involved for this use case are:
 
 - Parse the full report from scan called `scan-full-report.json` and extract only the `critical` findings
-- Use [PyGithub](https://github.com/PyGithub/PyGithub) library to create an issue for each finding
+- Use [PyGithub](https://github.com/PyGithub/PyGithub) library (or)
+- Use [JIRA Python](https://jira.readthedocs.io/en/master/examples.html) to create an issue for each finding
 
 ### Parsing the full report
 
@@ -54,7 +55,7 @@ commit_sha = sarif_data["versionControlProvenance"]["revisionId"]
     Findings is a list of results dict. See result section under [SARIF Json](../integrations/sarif.md)
 
 
-### Issue creation
+### Issue creation (GitHub)
 
 With PyGithub, the below code snippet can be used to create GitHub issues.
 
@@ -90,6 +91,31 @@ for f in findings:
     - Close the defects that are not found in the SARIF file but exists on GitHub based on the label `Security Issue`
 
     Once this is implemented please make it open-source and share it with the community!
+
+### Issue creation (JIRA)
+
+```python
+from jira import JIRA
+
+jac = JIRA('https://jira.atlassian.com', auth=('username', 'password'))
+
+# Iterate through the findings and create issues
+for f in findings:
+    summary = "{}:{}".format("SCAN", f["message"]["text"])
+    # Just dump the json as a body for now. But feel free to customize this
+    description = json.dumps(f)
+    issue_dict = {
+        'project': {'id': 123},
+        'summary': summary,
+        'description': description,
+        'issuetype': {'name': 'Bug'},
+    }
+    new_issue = jac.create_issue(fields=issue_dict)
+    # Assigning to the user based on repo_context.invokedBy
+    # new_issue.update(assignee={'name': 'new_user'})
+    # Attaching reports to the issues
+    jac.add_attachment(issue=new_issue, attachment='reports/source-js-report.html')
+```
 
 ## Security assurance for deployment
 
@@ -172,7 +198,7 @@ if __name__ == "__main__":
 
 ## Software Bill-of-Materials Report
 
-Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requisite for performing dependency scanning (`depscan`). This file is an xml file compatible with [CycloneDX 1.2 specification](https://cyclonedx.org/docs/1.2/) with a `bom` prefix. Refer to the [SBOM page](../integrations/sbom.md) for further information.
+Software Bill-of-Materials SBOM is automatically produced by scan as a pre-requisite for performing dependency scanning (`depscan`). These are in xml and JSON format compatible with [CycloneDX 1.2 specification](https://cyclonedx.org/docs/1.2/) with a `bom` prefix. Refer to the [SBOM page](../integrations/sbom.md) for further information.
 
 There are quite a number of scenarios why this report might be required by your security team:
 
@@ -180,7 +206,7 @@ There are quite a number of scenarios why this report might be required by your 
 - To produce release notes and give credits for the community
 - To please their boss
 
-In the below example, we use XSLT and a bash command called `xsltproc` to produce a simple markdown table of packages and their license.
+In the below example, we use XSLT and a bash command called `xsltproc` to produce a simple markdown table of packages and their license. Feel free to use the json format too.
 
 - Create an XSLT file with the below and save it as `bom.xslt`
 
