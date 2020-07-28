@@ -38,6 +38,51 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
 
    ![Console logs](img/build-log-summary.png)
 
+### AppImage based execution (Linux agents)
+
+Scan AppImage executable can be used with Ubuntu 20.04 linux agent. The small size helps reduce the total time compared to the docker based invocation.
+
+Below is a sample configuration for a Java + Maven based project.
+
+```yaml
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    goals: 'compile'
+- task: Bash@3
+  displayName: ShiftLeft cli scan
+  inputs:
+    targetType: 'inline'
+    script: |
+      sh <(curl https://slscan.sh/install)
+      $HOME/.local/bin/scan -t java,depscan -o $(Build.ArtifactStagingDirectory)/CodeAnalysisLogs
+  env:
+    WORKSPACE: https://github.com/prabhu/struts2-rce/blob/$(Build.SourceVersion)
+    SCAN_DEBUG_MODE: debug
+    GITHUB_TOKEN: $(GITHUB_TOKEN)
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish analysis logs"
+  inputs:
+    PathtoPublish: "$(Build.ArtifactStagingDirectory)/CodeAnalysisLogs"
+    ArtifactName: "CodeAnalysisLogs"
+    publishLocation: "Container"
+```
+
+Try using the AppImage format first. If there are errors or no results (Everything scanner reporting 0) then try the docker based execution.
+
 ### Container jobs based pipelines
 
 By default, jobs run on the host machine where the agent is installed. This is convenient and typically well-suited for projects that are just beginning to adopt Azure Pipelines. On Linux and Windows agents, jobs may be run on the host or in a [container](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops). ShiftLeft scan support such container jobs based pipelines. Use `container: shiftleft/sast-scan:latest` as shown.
