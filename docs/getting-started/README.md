@@ -221,7 +221,8 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | WORKSPACE         | URL or the path to use for all references to the source code. Use blank to use relative path or in case of GitHub code scanning        |
 | SCAN_ID           | Custom id to use for the scan run. Set this to match your CI job id or any other id to simplify integration                            |
-| SCAN_AUTO_BUILD   | Enables automatic build using the bundled languages and runtime prior to scan. Supported languages are java, go, node.js, csharp, rust |
+| SCAN_AUTO_BUILD   | Enables automatic build using the bundled languages and runtime prior to scan. Supported languages are: java, kotlin, go, node.js, csharp, rust, php |
+| SCAN_ANNOTATE_PR  | Set to true or 1 to enable automatic PR annotation. Only Bitbucket is supported for now |
 | GITHUB_TOKEN      | GitHub personal access token with `read:packages` scope to enable package lookup during dependency and license scans                   |
 | REPOSITORY_URL    | Repository URL. Useful in cases when scan is trigger from a non-git based source such as an s3 bucket                                  |
 | COMMIT_SHA        | Git commit hash. This is useful while scanning non-git based source                                                                    |

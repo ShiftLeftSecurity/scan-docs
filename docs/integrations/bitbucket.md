@@ -1,6 +1,10 @@
 # Integration with Bitbucket Pipelines
 
-Create a yaml file called `bitbucket-pipelines.yml` in the root directory of your project with the following configuration.
+Scan supports Bitbucket pipelines both via the docker image as well as with the AppImage. In addition, Scan can automatically add PR annotations via Bitbucket Code insights when a repository variable called `SCAN_ANNOTATE_PR` is set to either `true` or `1`
+
+Create a yaml file called `bitbucket-pipelines.yml` in the root directory of your project with the following configuration depending on your preference between docker and AppImage.
+
+## Docker based step
 
 ```yaml
 image: shiftleft/scan:latest
@@ -9,6 +13,17 @@ pipelines:
   default:
     - step:
         script:
+          - scan --build
+```
+
+## AppImage based step
+
+```yaml
+pipelines:
+  default:
+    - step:
+        script:
+          - sh <(curl https://slscan.sh/install)
           - scan --build
 ```
 
@@ -53,3 +68,13 @@ pipelines:
 ```
 
 Follow this [link](https://bitbucket.org/prabhusl/helloshiftleft/src/master/bitbucket-pipelines.yml) for a full working pipeline.
+
+## Automatic Code insights integration
+
+By setting the Repository variable `SCAN_ANNOTATE_PR` to `true`, scan can automatically add the findings as Code insights. No further setup or pipe is necessary. Below are some example screenshots:
+
+Scan report would show up in the right sidebar.
+![PR with Scan Report](img/scan-bb-pr.png)
+
+Selecting the report would present the insights view. The source code link can be clicked to see the problematic lines.
+![Code insights](img/scan-bb-insights.png)
