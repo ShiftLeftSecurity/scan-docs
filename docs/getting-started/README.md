@@ -2,6 +2,9 @@
 
 ShiftLeft Scan is distributed as both a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and as an [AppImage executable](https://github.com/ShiftLeftSecurity/sast-scan/releases). It is therefore easy to install, setup in the CI or locally, and then to run it.
 
+!!! Tip
+    Both shiftleft/sast-scan and shiftleft/scan are the same.
+
 ## Scanning the Application Locally
 
 ### Pre-requisites
@@ -86,7 +89,7 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type credscan
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan scan --src /app --type credscan
     ```
 
 === "Python"
@@ -95,7 +98,7 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type python
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan scan --src /app --type python
     ```
 
 === "Dependency scanning"
@@ -107,35 +110,52 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type depscan
+    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
     ```
 
 === "Node.js"
     Specify `nodejs` as the type.
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type nodejs
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan scan --src /app --type nodejs
     ```
 
     To include dependency scanning in addition to security audits include `depscan` as shown.
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type nodejs,depscan
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan scan --src /app --type nodejs,depscan
     ```
 
 === "go"
     Specify `go` as the type. To enable automatic build pass `--build` as a parameter.
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type go --build
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan scan --src /app --type go --build
     ```
 
-=== "Kotlin"
-    Specify `kotlin` as the type. To enable automatic build pass `--build` as a parameter.
+=== "IaC"
+    Scan supports Infrastructure-as-Code (IaC) scans for Kubernetes, Terraform and AWS cloudformation.
+
+    **Kubernetes**
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type kotlin --build
+    docker run --rm -e -v "$PWD:/app" shiftleft/scan scan --src /app --type kubernetes
     ```
+
+    **Terraform**
+
+    ```bash
+    docker run --rm -e -v "$PWD:/app" shiftleft/scan scan --src /app --type terraform
+    ```
+
+    **AWS**
+
+    ```bash
+    docker run --rm -e -v "$PWD:/app" shiftleft/scan scan --src /app --type aws
+    ```
+
+    If using AWS CDK, export the project as cloudformation prior to scanning.
+
 
 === "PHP"
     Composer based projects are supported quite well by scan. For legacy projects, scan would attempt to create a `composer.json` file on-the-fly. Specify `php` as the type. To enable automatic build pass `--build` as a parameter.
@@ -222,8 +242,10 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | WORKSPACE         | URL or the path to use for all references to the source code. Use blank to use relative path or in case of GitHub code scanning        |
 | SCAN_ID           | Custom id to use for the scan run. Set this to match your CI job id or any other id to simplify integration                            |
 | SCAN_AUTO_BUILD   | Enables automatic build using the bundled languages and runtime prior to scan. Supported languages are: java, kotlin, go, node.js, csharp, rust, php |
-| SCAN_ANNOTATE_PR  | Set to true or 1 to enable automatic PR annotation. Only Bitbucket is supported for now |
+| SCAN_ANNOTATE_PR  | Set to true or 1 to enable automatic PR annotation. Only Bitbucket and GitLab is supported for now |
+| BITBUCKET_TOKEN      | Bitbucket app password with `Pull Request: Read and Write` scope to enable pull request summary comment. Use along with SCAN_ANNOTATE_PR                   |
 | GITHUB_TOKEN      | GitHub personal access token with `read:packages` scope to enable package lookup during dependency and license scans                   |
+| GITLAB_TOKEN      | GitLab personal access token with `api` scope to enable merge request summary comment. Use along with SCAN_ANNOTATE_PR                   |
 | REPOSITORY_URL    | Repository URL. Useful in cases when scan is trigger from a non-git based source such as an s3 bucket                                  |
 | COMMIT_SHA        | Git commit hash. This is useful while scanning non-git based source                                                                    |
 | BRANCH            | Git branch name. Automatically detected for git repositories. Specify this while scanning a folder or svn repository                   |
