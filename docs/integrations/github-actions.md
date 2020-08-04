@@ -1,4 +1,4 @@
-## Integration as Github Actions
+# Integration as Github Actions
 
 ShiftLeft Scan is available as a free GitHub action [here](https://github.com/marketplace/actions/shiftleft-scan)
 
@@ -31,3 +31,26 @@ An advanced configuration including the ability to customize the WORKSPACE URL a
 Refer to this [example](https://github.com/ShiftLeftSecurity/HelloShiftLeft/blob/master/.github/workflows/slscan.yml) for a complete build pipeline.
 
 ![Reports](img/scan-github.png)
+
+## Automatic Pull Request comments
+
+Scan can automatically add the summary as a comment to the GitHub Pull Requests. In addition, a status check and a label would also be created.
+
+![Reports](img/gh-pr-comment.png)
+
+### Customization
+
+To customize the message used for the comment, create a .sastscanrc file in the repo as suggested [here](tips.md) with the below config.
+
+```json
+{
+  "PR_COMMENT_TEMPLATE": "## ShiftLeft Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
+}
+```
+
+- summary - Summary Table
+- recommendation - One liner recommendation string (Hardcoded for now)
+
+### Disable comments
+
+Set the environment variable `SCAN_ANNOTATE_PR` to false or 0 to disable this feature.
