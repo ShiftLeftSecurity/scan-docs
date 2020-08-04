@@ -43,6 +43,7 @@ nav:
   - "index.md"
   - "Getting started": "getting-started/README.md"
   - "Use Cases": "getting-started/use-cases.md"
+  - "Zen of Scan": "getting-started/zen-of-scan.md"
   - "CI/CD Integrations":
       - "Introduction": "integrations/README.md"
       - "Azure DevOps Pipelines": "integrations/azure-devops-pipeline.md"

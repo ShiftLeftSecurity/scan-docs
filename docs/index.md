@@ -1,14 +1,14 @@
 # Introduction
 
-ShiftLeft Scan is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security tool for modern DevOps teams. With an integrated multi-scanner based design, ShiftLeft Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan. The kind of flaws detected are:
+ShiftLeft Scan is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security tool for modern DevOps teams. With an integrated multi-scanner based design, ShiftLeft Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
 
 * [x] Credentials Scanning to detect accidental secret leaks
 * [x] Static Analysis Security Testing (SAST) for a range of languages and frameworks
 * [x] Open-source dependencies audit
 * [x] Licence violation checks
 
-!!! Summary
-    Scan supports a range of integration options: from scanning the code on your IDE to scanning every build and pull-request in the CI/CD pipelines.
+!!! Workflow
+    Scan is purpose built for DevSecOps workflow [integrations](integrations) with nifty features such as automatic build breaker, Pull Request summary comments, GitHub Code scanning and Bitbucket Code Insights support and so on.
 
 ## Sample invocation
 
@@ -72,12 +72,12 @@ Full list of supported languages is as follows:
 
 ## Start with your use case
 
-=== "Secure development"
-    - Read more about [secure development](secure-development/README.md) and best practices with scan for a range of languages
-=== "Scan GitHub"
-    - Use scan with [GitHub code scanning](integrations/code-scan.md)
 === "Integrate with CI/CD"
     - Explore the available [CI/CD integrations](integrations/README.md)
+=== "Scan GitHub"
+    - Use scan with [GitHub code scanning](integrations/code-scan.md)
+=== "Secure development"
+    - Read more about [secure development](secure-development/README.md) and best practices with scan for a range of languages
 === "Advanced use cases"
     - Read more about the [SARIF format](integrations/sarif.md) used by scan for integration with any SARIF compliant SAST tool
     - Learn about the [Software Bill-of-Materials](integrations/sbom.md) report produced by scan
