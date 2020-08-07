@@ -2,9 +2,6 @@
 
 ShiftLeft Scan is distributed as both a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and as an [AppImage executable](https://github.com/ShiftLeftSecurity/sast-scan/releases). It is therefore easy to install, setup in the CI or locally, and then to run it.
 
-!!! Tip
-    Both shiftleft/sast-scan and shiftleft/scan are the same.
-
 ## Scanning the Application Locally
 
 ### Pre-requisites
@@ -72,6 +69,9 @@ To scan multiple projects, separate the types with a comma. Here reports will be
 ```bash
 docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --src /app --type credscan,nodejs,python,yaml --out_dir /app/reports
 ```
+
+!!! Tip
+    Scan container image can be referred to as either `shiftleft/sast-scan` or `shiftleft/scan`.
 
 ### Scanning Java Projects
 
@@ -253,3 +253,35 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | CREDSCAN_TIMEOUT  | Timeout for credscan. Default 2m                                                                                 |
 | DISABLE_TELEMETRY | Set to true or 1 to disable telemetry submission to the default url which is https://telemetry.appthreat.io/track |
 | TELEMETRY_URL | Set this value to a URL that will receive the telemetry json from scan invocations. Refer to [telemetry](../integrations/telemetry.md) |
+
+## Suppression
+
+Scan is optimized for reducing false positives and errors. But due to the nature of the static analysis and limitations of the opensource scanners there are times when scan produce clear false positives. We have seen this happening for python (bandit), JavaScript (njsscan) and even Java (FindSecBugs).
+
+To suppress finding on a specific line, simply add a comment with the `scan:ignore` marker:
+
+### Python example
+
+Hash based comment is supported
+
+```python
+# scan:ignore
+Line of code producing false positive
+```
+
+### JavaScript or Java example
+
+Single and multi-line comment is supported
+
+```javascript
+Line of code producing false positive // scan:ignore
+```
+
+```java
+Line of code producing false positive // scan:ignore or /* scan:ignore */ or // nosec
+```
+
+In addition to `scan:ignore` we support `nolint`, `nosec` and `sl:ignore` markers. Simply add any one of these as a comment.
+
+!!! Note
+    The marker should be added next to the exact line reported by scan. We currently do not support method or file level ignore.

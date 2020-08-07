@@ -8,7 +8,7 @@ ShiftLeft Scan is a free [open-source](https://github.com/ShiftLeftSecurity/sast
 * [x] Licence violation checks
 
 !!! Workflow
-    Scan is purpose built for DevSecOps workflow [integrations](integrations) with nifty features such as automatic build breaker, Pull Request summary comments, GitHub Code scanning and Bitbucket Code Insights support and so on.
+    Scan is purpose built for DevSecOps workflow [integrations](integrations) with nifty features such as automatic build breaker, Pull Request summary comments, GitHub [Code scanning](integrations/code-scan.md) and [Bitbucket](integrations/bitbucket.md) Code Insights support and so on.
 
 ## Sample invocation
 
@@ -82,3 +82,7 @@ Full list of supported languages is as follows:
     - Read more about the [SARIF format](integrations/sarif.md) used by scan for integration with any SARIF compliant SAST tool
     - Learn about the [Software Bill-of-Materials](integrations/sbom.md) report produced by scan
     - Learn about rolling out a [telemetry service](integrations/telemetry.md) to aggregate and audit scan invocations
+
+## Support
+
+Developers behind scan are available on a dedicated [discord channel](https://discord.gg/gC62PzS) for questions and support. For defects, raising an issue on [GitHub](https://github.com/ShiftLeftSecurity/sast-scan/issues) is best.
