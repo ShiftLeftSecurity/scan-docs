@@ -256,7 +256,7 @@ Scan use a number of environment variables for configuration and cutomizing the 
 
 ## Suppression
 
-Scan is optimized for reducing false positives and errors. But due to the nature of the static analysis and limitations of the opensource scanners there are times when scan produce clear false positives. We have seen this happening for python (bandit), JavaScript (njsscan) and even Java (FindSecBugs).
+Scan is optimized for reducing false positives and errors. But due to the nature of static analysis and limitations of the opensource scanners, there are times when scan produce clear false positives. We have seen this happening for python (bandit), JavaScript (njsscan) and even Java (FindSecBugs).
 
 To suppress finding on a specific line, simply add a comment with the `scan:ignore` marker:
 
