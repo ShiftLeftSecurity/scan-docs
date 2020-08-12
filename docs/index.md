@@ -48,7 +48,8 @@ Full list of supported languages is as follows:
 |----------|-----------|---------------------|------|-----------------|---------------|---------------|
 | Salesforce Apex     | apex | ✓ | ✓ | | | ✓ |
 | Ansible     | ansible | ✓ | 🚧 | | | |
-| AWS CloudFormation     | aws | ✓ | ✓ | | | ✓ |
+| AWS CloudFormation / CDK     | aws | ✓ | ✓ | | | ✓ |
+| Azure Resource Manager Templates     | arm | ✓ | ✓ | | | ✓ |
 | Bash     | bash | ✓ | ✓ | | | ✓ |
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -63,12 +64,15 @@ Full list of supported languages is as follows:
 | Ruby     | ruby | ✓ | | ✓ | ✓ | |
 | Rust     | rust | ✓ | | ✓ | ✓ | |
 | Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
+| Serverless     | serverless | ✓ | ✓ | | | ✓ |
 | Terraform     | terraform | ✓ | ✓ | | | ✓ |
 | Salesforce Visual Force    | vf | ✓ | ✓ | | | ✓ |
 | Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
 | Yaml     | yaml | ✓ | 🚧 | | | |
 
 🚧 - Work-in-progress feature
+
+To scan AWS CDK codebase, export to cloudformation and then scan using `aws` type.
 
 ## Start with your use case
 
