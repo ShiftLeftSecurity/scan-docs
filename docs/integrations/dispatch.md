@@ -10,13 +10,13 @@ Create a [Dispatchfile](https://docs.d2iq.com/ksphere/dispatch/1.1/pipeline-conf
 #Load library to define a git resource and process a pull request
 load("github.com/mesosphere/dispatch-catalog/starlark/stable/pipeline@master", "git_resource", "pull_request")
 
-#Load library to execute ShiftLeft Scan
+#Load library to execute Scan
 load("github.com/shiftleftsecurity/sast-scan/starlark/scan@master", "sast_scan")
 
 #Resources Define the git repo as a resource
 git = git_resource("helloworld-git")
 
-#Tasks that performs a ShiftLeft Scan against the Resource
+#Tasks that performs a Security Scan against the Resource
 sast_scan("sastscan-check", git)
 
 #Actions that trigger against any pull request or the chatops command /build
@@ -24,14 +24,14 @@ action(tasks=["sastscan-check"], on=pull_request())
 action(tasks=["sastscan-check"], on=pull_request(chatops=["build"]))
 ```
 
-While being brief, the pipeline, which is also stored in the application's repo, will perform a ShiftLeft scan against the repository where the Dispatchfile resides. The libraries with the three functions "git_resource", "pull_request", and "sast_scan" are loaded at runtime. The pipeline can be triggered either by a pull request against the repository or by executing the ChatOps command "/build" against a pull request.
+While being brief, the pipeline, which is also stored in the application's repo, will perform a scan against the repository where the Dispatchfile resides. The libraries with the three functions "git_resource", "pull_request", and "sast_scan" are loaded at runtime. The pipeline can be triggered either by a pull request against the repository or by executing the ChatOps command "/build" against a pull request.
 
 Next, open up a PR against the application repo and a webhook will be subsequently generated. This will trigger the pipeline to kick off on your running instance of Dispatch.
 
 !!! Tip
     There are multiple ways to view the results of the pipeline via your Git provider or the Dispatch UI.
 
-In the Dispatch UI, you can see the pipeline run status. In the below example, dispatch failed the pipeline run due to ShiftLeft Scan determining that there were security flaws in the application.
+In the Dispatch UI, you can see the pipeline run status. In the below example, dispatch failed the pipeline run due to Scan determining that there were security flaws in the application.
 
 ![Dispatch Pipeline Status](img/d2iq1.png)
 

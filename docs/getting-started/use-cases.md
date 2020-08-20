@@ -10,7 +10,7 @@ Here are some use cases, where scan can help with your DevSecOps process and sec
     pip install PyGithub
     ```
 
-- ShiftLeft Scan is performed with scan results available under `reports` directory
+- Scan is performed with scan results available under `reports` directory
 
 ## Automatic issue creation for critical vulnerabilities
 
