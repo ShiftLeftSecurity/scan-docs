@@ -36,7 +36,6 @@ sast-tool implements version 2.1.0 specification which can be found [here](https
             "name": "",
             "properties": {
             "tags": [
-                "ShiftLeft",
                 "Scan"
             ],
             "precision": "very-high"

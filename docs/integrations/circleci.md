@@ -1,6 +1,6 @@
 ## Integration with CircleCI
 
-ShiftLeft Scan has good support for integration with CircleCI builds.
+Scan has good support for integration with CircleCI builds.
 
 ```yaml
 version: 2.1
@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Perform ShiftLeft Scan
+          name: Perform Scan
           command: |
             scan --build
       - store_artifacts:

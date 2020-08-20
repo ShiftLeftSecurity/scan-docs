@@ -1,6 +1,6 @@
 # Introduction
 
-Secure development practices include performing automated security scans using tools such as ShiftLeft Scan sooner and at every stage during a Software Development Lifecycle (SDLC).
+Secure development practices include performing automated security scans using tools such as Scan sooner and at every stage during a Software Development Lifecycle (SDLC).
 
 ## Integrating scan in your SDLC
 
@@ -16,7 +16,7 @@ This is the phase where the developer/team thinks and researches about the upcom
 
 ### Develop
 
-Use ShiftLeft Scan [VS code extension](../integrations/vscode.md) to continuously assess and test the source code as you develop. Scan can also look for possible credential leaks and help you prevent the leaks before they get committed to the repository.
+Use Scan [VS code extension](../integrations/vscode.md) to continuously assess and test the source code as you develop. Scan can also look for possible credential leaks and help you prevent the leaks before they get committed to the repository.
 
 ### Deploy
 

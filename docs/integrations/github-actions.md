@@ -1,6 +1,6 @@
 # Integration as Github Actions
 
-ShiftLeft Scan is available as a free GitHub action [here](https://github.com/marketplace/actions/shiftleft-scan)
+Scan is available as a free GitHub action [here](https://github.com/marketplace/actions/shiftleft-scan)
 
 A minimal setup configuration is shown below:
 
@@ -13,7 +13,7 @@ A minimal setup configuration is shown below:
 An advanced configuration including the ability to customize the WORKSPACE URL and GitHub package search is below:
 
 ```yaml
-- name: ShiftLeft Scan
+- name: Scan
   uses: ShiftLeftSecurity/scan-action@master
   env:
     WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
@@ -44,7 +44,7 @@ To customize the message used for the comment, create a .sastscanrc file in the 
 
 ```json
 {
-  "PR_COMMENT_TEMPLATE": "## ShiftLeft Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
+  "PR_COMMENT_TEMPLATE": "## Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
 }
 ```
 

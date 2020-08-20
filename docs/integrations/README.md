@@ -1,6 +1,6 @@
-# ShiftLeft Scan in CI/CD Pipelines
+# Scan in CI/CD Pipelines
 
-ShiftLeft Scan is purpose built for integration into your workflow. Here are a few integration approaches for ShiftLeft Scan with modern CI/CD systems:
+Scan is purpose built for integration into your workflow. Here are a few integration approaches for Scan with modern CI/CD systems:
 
 ## Repository based platforms
 

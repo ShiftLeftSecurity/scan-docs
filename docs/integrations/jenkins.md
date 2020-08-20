@@ -4,7 +4,7 @@ You can add the following stage to your `Jenkinsfile` (declarative syntax) for a
 
 ```groovy
 stages {
-    stage('ShiftLeft Scan') {
+    stage('Scan') {
         agent {
             docker { image 'shiftleft/sast-scan' }
         }
@@ -19,7 +19,7 @@ For Java and JVM based projects, compile the project before invoking the scan.
 
 ```groovy
 stages {
-    stage('ShiftLeft Scan') {
+    stage('Scan') {
         agent {
             docker { image 'shiftleft/sast-scan' }
         }
@@ -104,7 +104,7 @@ pipeline {
     }     
 
     stages {     
-            stage('ShiftLeft Scan') {
+            stage('Scan') {
                 steps {
                   sh 'scan --build'
                 }

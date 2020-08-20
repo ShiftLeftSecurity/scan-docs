@@ -1,6 +1,6 @@
 # Integration with GitLab CI
 
-ShiftLeft Scan is available for all GitLab CI users including the free users. In addition, it is possible to configure scan to add notes/comments to merge requests.
+Scan is available for all GitLab CI users including the free users. In addition, it is possible to configure scan to add notes/comments to merge requests.
 
 Simply add the below section to your `.gitlab-ci.yml` file
 
@@ -93,7 +93,7 @@ To customize the message used for the comment, create a .sastscanrc file in the 
 
 ```json
 {
-  "PR_COMMENT_TEMPLATE": "## ShiftLeft Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
+  "PR_COMMENT_TEMPLATE": "## Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
 }
 ```
 

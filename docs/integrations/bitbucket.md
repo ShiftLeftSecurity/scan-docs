@@ -104,7 +104,7 @@ To customize the message used for the comment, create a .sastscanrc file in the 
 
 ```json
 {
-  "PR_COMMENT_BASIC_TEMPLATE": "## ShiftLeft Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
+  "PR_COMMENT_BASIC_TEMPLATE": "## Scan Summary\n%(summary)s\n## Recommendation\n%(recommendation)s\n"
 }
 ```
 

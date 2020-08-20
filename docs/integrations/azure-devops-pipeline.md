@@ -1,6 +1,6 @@
 ## Integration with Azure DevOps Pipelines
 
-ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedicated [extension](https://marketplace.visualstudio.com/items?itemName=shiftleftsecurity.sl-scan-results). Below are the steps for integration with a yaml based pipeline:
+Scan has a best-in-class integration for Azure Pipelines with our dedicated [extension](https://marketplace.visualstudio.com/items?itemName=shiftleftsecurity.sl-scan-results). Below are the steps for integration with a yaml based pipeline:
 
 - Install the extension to your Azure DevOps Organization. Ask your administrator for help if you do not have this permission.
 
@@ -13,7 +13,7 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
       -v "$(Build.ArtifactStagingDirectory):/reports" \
       shiftleft/sast-scan scan --src /app --build \
       --out_dir /reports/CodeAnalysisLogs
-  displayName: "Perform ShiftLeft Scan"
+  displayName: "Perform Scan"
   continueOnError: "true"
 
 - task: PublishBuildArtifacts@1
@@ -26,7 +26,7 @@ ShiftLeft Scan has a best-in-class integration for Azure Pipelines with our dedi
 
 - Trigger a build as normal and wait for it to complete.
 
-- From the Pipelines page, select the most recent run. You should see a tab called **ShiftLeft Scan** as shown below.
+- From the Pipelines page, select the most recent run. You should see a tab called **Scan** as shown below.
 
    ![Scan Tab](img/scan-tab.png)
 
@@ -62,7 +62,7 @@ steps:
     publishJUnitResults: false
     goals: 'compile'
 - task: Bash@3
-  displayName: ShiftLeft cli scan
+  displayName: Perform Scan
   inputs:
     targetType: 'inline'
     script: |
@@ -85,22 +85,22 @@ Try using the AppImage format first. If there are errors or no results (Everythi
 
 ### Container jobs based pipelines
 
-By default, jobs run on the host machine where the agent is installed. This is convenient and typically well-suited for projects that are just beginning to adopt Azure Pipelines. On Linux and Windows agents, jobs may be run on the host or in a [container](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops). ShiftLeft scan support such container jobs based pipelines. Use `container: shiftleft/sast-scan:latest` as shown.
+By default, jobs run on the host machine where the agent is installed. This is convenient and typically well-suited for projects that are just beginning to adopt Azure Pipelines. On Linux and Windows agents, jobs may be run on the host or in a [container](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops). Scan support such container jobs based pipelines. Use `container: shiftleft/sast-scan:latest` as shown.
 
 ```yaml
 pool:
   vmImage: "ubuntu-latest"
 container: shiftleft/sast-scan:latest
 steps:
-  # This integrates ShiftLeft Scan with automatic build
+  # This integrates Scan with automatic build
   - script: scan --build --out_dir $(Build.ArtifactStagingDirectory)/CodeAnalysisLogs
     env:
       WORKSPACE: https://github.com/prabhu/HelloShiftLeft/blob/$(Build.SourceVersion)
       GITHUB_TOKEN: $(GITHUB_TOKEN)
-    displayName: "Perform ShiftLeft scan"
+    displayName: "Perform scan"
     continueOnError: "true"
 
-  # To integrate with the ShiftLeft Scan Extension it is necessary to publish the CodeAnalysisLogs folder
+  # To integrate with the Scan Extension it is necessary to publish the CodeAnalysisLogs folder
   # as an artifact with the same name
   - task: PublishBuildArtifacts@1
     displayName: "Publish analysis logs"
@@ -126,7 +126,7 @@ You can improve the quality of the dependency scan (`--type depscan`) by passing
       -v "$(Build.ArtifactStagingDirectory):/reports" \
       shiftleft/sast-scan scan --src /app \
       --out_dir /reports/CodeAnalysisLogs
-  displayName: "Perform ShiftLeft Scan"
+  displayName: "Perform Scan"
   continueOnError: "true"
 ```
 
