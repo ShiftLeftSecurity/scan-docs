@@ -1,8 +1,8 @@
-site_name: Scan
+site_name: Scan (skæn)
 site_url: https://slscan.io/en/latest/
 site_author: Team Scan
 site_description: >-
-  Scan is a free open-source security tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any remote server! The product supports a range of integration options: from scanning every push via a git hook to scanning every build and pull-request in the CI/CD pipelines.
+  Scan (skæn) is a free open-source security tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any remote server! The product supports a range of integration options: from scanning every push via a git hook to scanning every build and pull-request in the CI/CD pipelines.
 # Repository
 repo_name: scan-docs
 repo_url: https://github.com/ShiftLeftSecurity/scan-docs
@@ -22,12 +22,12 @@ theme:
   favicon: images/favicon.ico
 extra:
   social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/gC62PzS
     - icon: fontawesome/brands/github
-      link: http://github.com/ShiftLeftSecurity
+      link: http://github.com/ShiftLeftSecurity/sast-scan
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/ShiftLeftInc
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/shiftleft
+      link: https://twitter.com/_prbh
 
 plugins:
   - search:
@@ -38,7 +38,7 @@ plugins:
 
 extra_css:
   - css/custom.css
-
+  
 nav:
   - "index.md"
   - "Getting started": "getting-started/README.md"
