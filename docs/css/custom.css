@@ -34,10 +34,14 @@ h6 {
   --md-admonition-title: hsla(10, 85%, 21%, 1);
   --md-code-fg-color:  hsla(15, 94%, 7%, 1);
   --md-code-bg-color:  hsla(39, 92%, 54%, 0.3);
-  --md-footer-bg-color: hsla(10, 85%, 21%, 1);
+  --md-footer-bg-color: hsla(15, 94%, 7%, 1);
   --md-code-hl-color: hsla(39, 92%, 54%, 1);
 }
 
 .md-typeset .task-list-control [type=checkbox]:checked+.task-list-indicator::before {
   background-color: hsla(15, 94%, 7%, 1) !important;
+}
+
+img[alt=scan-logo] {
+  width: 400px;
 }

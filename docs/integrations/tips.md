@@ -95,7 +95,7 @@ podman run --security-opt seccomp=/home/guest/sast-scan/contrib/seccomp.json -e 
 
 ## Troubleshooting
 
-Scan by default suppresses all errors and messages from the tools as a [philosophy](../../getting-started/zen-of-scan.md). To debug issues, especially when 0 results are reported by all tools, simply pass the environment variable `SCAN_DEBUG_MODE=debug` as shown.
+Scan by default suppresses all errors and messages from the tools as a [philosophy](../getting-started/zen-of-scan.md). To debug issues, especially when 0 results are reported by all tools, simply pass the environment variable `SCAN_DEBUG_MODE=debug` as shown.
 
 ```
 -e SCAN_DEBUG_MODE=debug

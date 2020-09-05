@@ -1,5 +1,7 @@
 # Introduction
 
+![scan-logo](../images/scan-light.png)
+
 Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
 
 * [x] Credentials Scanning to detect accidental secret leaks

@@ -20,7 +20,7 @@ theme:
   font:
     text: Muli, "Work Sans"
     code: "Fira Mono"
-  logo: images/scan-logo.png
+  logo: images/scan-dark.png
   favicon: images/favicon.ico
   palette:
     scheme: scan
