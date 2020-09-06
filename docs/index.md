@@ -1,6 +1,8 @@
 # Introduction
 
-Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
+![scan-logo](../images/scan-light.png)
+
+Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
 
 * [x] Credentials Scanning to detect accidental secret leaks
 * [x] Static Analysis Security Testing (SAST) for a range of languages and frameworks
@@ -12,7 +14,7 @@ Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-s
 
 ## Sample invocation
 
-Easy one-liner command below:
+Easy one-liner command below (Assuming this is fine for you):
 
 ```bash
 sh <(curl https://slscan.sh)
@@ -35,7 +37,7 @@ sh <(curl https://slscan.sh/install)
 Expanded version of the one-liner command.
 
 ```bash
-wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.9/scan
+wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan
 chmod +x scan
 ./scan -t nodejs
 ```
@@ -51,16 +53,16 @@ Full list of supported languages is as follows:
 | AWS CloudFormation / CDK     | aws | ✓ | ✓ | | | ✓ |
 | Azure Resource Manager Templates     | arm | ✓ | ✓ | | | ✓ |
 | Bash     | bash | ✓ | ✓ | | | ✓ |
-| Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Scala    | scala | ✓ | ✓ |  |  | ✓ |
-| Groovy    | groovy | ✓ | ✓ | ✓ | ✓ | ✓ |
-| JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Scala    | scala | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Groovy    | groovy | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
-| Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
+| :material-check-all: Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Ruby     | ruby | ✓ | | ✓ | ✓ | |
 | Rust     | rust | ✓ | | ✓ | ✓ | |
 | Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
@@ -70,7 +72,10 @@ Full list of supported languages is as follows:
 | Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
 | Yaml     | yaml | ✓ | 🚧 | | | |
 
-🚧 - Work-in-progress feature
+### Legend
+
+- 🚧 - Work-in-progress feature
+- :material-check-all: - Best-in-class support
 
 To scan AWS CDK codebase, export to cloudformation and then scan using `aws` type.
 
@@ -78,10 +83,12 @@ To scan AWS CDK codebase, export to cloudformation and then scan using `aws` typ
 
 === "Integrate with CI/CD"
     - Explore the available [CI/CD integrations](integrations/README.md)
-=== "Scan GitHub"
+=== "Scan your Repos"
     - Use scan with [GitHub code scanning](integrations/code-scan.md)
+    - Scan [GitLab](integrations/gitlab.md), [Bitbucket](integrations/bitbucket.md) and Azure [Repos](integrations/azure-devops-pipeline.md)
 === "Secure development"
     - Read more about [secure development](secure-development/README.md) and best practices with scan for a range of languages
+    - Configure scan and [customize](integrations/tips.md) the default build breaker logic
 === "Advanced use cases"
     - Read more about the [SARIF format](integrations/sarif.md) used by scan for integration with any SARIF compliant SAST tool
     - Learn about the [Software Bill-of-Materials](integrations/sbom.md) report produced by scan

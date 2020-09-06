@@ -1,6 +1,6 @@
 # Getting Started
 
-Scan is distributed as both a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and as an [AppImage executable](https://github.com/ShiftLeftSecurity/sast-scan/releases). It is therefore easy to install, setup in the CI or locally, and then to run it.
+scan is distributed as both a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and as an [AppImage executable](https://github.com/ShiftLeftSecurity/sast-scan/releases). It is therefore easy to install, setup in the CI or locally, and then to run it.
 
 ## Scanning the Application Locally
 
@@ -10,7 +10,7 @@ Scan is distributed as both a container [image](https://hub.docker.com/r/shiftle
 - For Linux, first [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
 
 !!! Tip
-    Scan works quite well with [podman](https://podman.io/) in rootless mode on both Linux and on Windows with WSL2!
+    Scan works quite well with [podman](https://podman.io/) in rootless mode on both Linux and on Windows with WSL2.
 
 ### Your first scan
 
@@ -81,6 +81,8 @@ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --sr
 docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan scan --src /app --type java
 ```
 
+![Java Scan](images/scan-java.gif)
+
 ### Language specific scans
 
 === "Credential scanning"
@@ -112,6 +114,9 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
     ```
+
+    !!! Note
+    `GITHUB_TOKEN` is required even if you are planning to use scan with GitLab, Bitbucket and other providers. Dependency and license lookup for open-source packages is heavily traffic shaped by GitHub themselves and hence would not work without this token.
 
 === "Node.js"
     Specify `nodejs` as the type.
@@ -172,13 +177,6 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
 
 Refer to the [readme](https://github.com/ShiftLeftSecurity/sast-scan#bundled-tools) for a complete list of all scan types.
 
-### Sample invocation
-
-```
-$ docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan
-```
-
-![Java Scan](images/scan-java.gif)
 
 ## Scanning using AppImage on Linux
 
@@ -196,7 +194,7 @@ sh <(curl https://slscan.sh/install)
 - Enable execute permission
 
 ```bash
-sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.9/scan -O /usr/local/bin/scan
+sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan -O /usr/local/bin/scan
 sudo chmod +x /usr/local/bin/scan
 ```
 - Use from the terminal
@@ -243,6 +241,7 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | SCAN_ID           | Custom id to use for the scan run. Set this to match your CI job id or any other id to simplify integration                            |
 | SCAN_AUTO_BUILD   | Enables automatic build using the bundled languages and runtime prior to scan. Supported languages are: java, kotlin, go, node.js, csharp, rust, php |
 | SCAN_ANNOTATE_PR  | Set to true or 1 to enable automatic PR annotation. Defaults to true in case of GitHub actions. |
+| SCAN_DEBUG_MODE | Setting this to `debug` would show debug output from individual tools. |
 | BITBUCKET_TOKEN      | Bitbucket app password with `Pull Request: Read and Write` scope to enable pull request summary comment. Use along with SCAN_ANNOTATE_PR                   |
 | GITHUB_TOKEN      | GitHub personal access token with `read:packages` scope to enable package lookup during dependency and license scans                   |
 | GITLAB_TOKEN      | GitLab personal access token with `api` scope to enable merge request summary comment. Use along with SCAN_ANNOTATE_PR                   |
@@ -253,6 +252,9 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | CREDSCAN_TIMEOUT  | Timeout for credscan. Default 2m                                                                                 |
 | DISABLE_TELEMETRY | Set to true or 1 to disable telemetry submission to the default url which is https://telemetry.appthreat.io/track |
 | TELEMETRY_URL | Set this value to a URL that will receive the telemetry json from scan invocations. Refer to [telemetry](../integrations/telemetry.md) |
+| VDB_HOME | Directory to use for caching database. For docker based execution, this directory should get mounted as a volume from the host. Eg: `-e "VDB_HOME=/db" -v "/tmp:/db"` |
+| NVD_START_YEAR | Default: 2018. Supports upto 1999 but increasing the year would increase the time and memory usage by depscan and may not work in CI environments |
+| GITHUB_PAGE_COUNT | Default: 5. Supports upto 30 |
 
 ## Suppression
 

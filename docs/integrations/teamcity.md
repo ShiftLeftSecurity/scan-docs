@@ -17,7 +17,7 @@ $HOME/.local/bin/scan --build
 The sh command is a one-liner command to download and install the latest scan AppImage from GitHub releases. You can also replace these steps with downloading from GitHub releases.
 
 ```bash
-sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.9/scan -O $HOME/.local/bin/scan
+sudo wget https://github.com/ShiftLeftSecurity/sast-scan/releases/download/v1.9.27/scan -O $HOME/.local/bin/scan
 sudo chmod +x $HOME/.local/bin/scan
 ```
 

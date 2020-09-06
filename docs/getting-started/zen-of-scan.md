@@ -6,3 +6,5 @@
 - Human intelligence and rules are better than AI and ML combined.
 - Errors should pass silently.
 - Unless explicitly debugged.
+
+![scan-logo](../images/scan-light.png)

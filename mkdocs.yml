@@ -1,8 +1,8 @@
-site_name: Scan (skæn)
+site_name: Scan docs
 site_url: https://slscan.io/en/latest/
 site_author: Team Scan
 site_description: >-
-  Scan (skæn) is a free open-source security tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any remote server! The product supports a range of integration options: from scanning every push via a git hook to scanning every build and pull-request in the CI/CD pipelines.
+  Scan is a free open-source security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any remote server! The product supports a range of integration options: from scanning every push via a git hook to scanning every build and pull-request in the CI/CD pipelines.
 # Repository
 repo_name: scan-docs
 repo_url: https://github.com/ShiftLeftSecurity/scan-docs
@@ -12,14 +12,18 @@ edit_uri: ""
 copyright: Copyright &copy; 2019 - 2020 Team Scan
 theme:
   features:
+    - search.highlight
+    - navigation.expand
     - instant
     - tabs
   name: material
   font:
     text: Muli, "Work Sans"
-    code: Source Code Pro
-  logo: images/scan-logo-dark.svg
+    code: "Fira Mono"
+  logo: images/scan-dark.png
   favicon: images/favicon.ico
+  palette:
+    scheme: scan
 extra:
   social:
     - icon: fontawesome/brands/discord
@@ -35,9 +39,6 @@ plugins:
   - minify:
       minify_html: true
   - git-revision-date-localized
-
-extra_css:
-  - css/custom.css
   
 nav:
   - "index.md"
@@ -75,6 +76,7 @@ nav:
       - "Terraform": "secure-deployment/terraform.md"
 
 markdown_extensions:
+  - meta
   - admonition
   - codehilite
   - toc:
@@ -85,7 +87,13 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tilde
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 google_analytics:
   - UA-92418701-2
   - auto
+
+extra_css:
+  - css/custom.css

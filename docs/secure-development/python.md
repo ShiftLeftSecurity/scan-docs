@@ -1,6 +1,18 @@
 # Python secure coding
 
-Scan uses bandit under-the-hood for scanning python projects. Following are some of the security checks performed and a description of remediation techniques and correct usages for certain modules.
+Scan bundles two python scanners:
+
+- [custom scanner](https://github.com/ShiftLeftSecurity/sast-scan/tree/master/lib/pyt) that use AST and CFG to perform advanced security analysis. This scanner currently outperforms all other open-source SAST tools for python
+- bandit - a basic AST based linter
+
+## Custom scanner rules
+
+- OWASP top 10 rules
+- Security best practices for frameworks such as Flask, Django, aiohttp, pymongo and so on.
+
+## Bandit rules
+
+Following are some of the security checks performed and a description of remediation techniques and correct usages for certain modules.
 
 B301: pickle
 ------------
@@ -258,26 +270,6 @@ finally:
     os.rmdir(tmpdir)
 ```
 
-
-B307: eval
-----------
-
-Use of possibly insecure function - consider using safer ast.literal_eval.
-
-| ID   |  Name               |  Calls                             |  Severity |
-|------|---------------------|------------------------------------|-----------|
-| B307 | eval                | - eval                             | Medium    |
-
-B308: mark_safe
----------------
-
-Use of mark_safe() may expose cross-site scripting vulnerabilities and should
-be reviewed.
-
-| ID   |  Name               |  Calls                             |  Severity |
-|------|---------------------|------------------------------------|-----------|
-| B308 | mark_safe           | - django.utils.safestring.mark_safe| Medium    |
-
 B309: httpsconnection
 ---------------------
 
@@ -316,7 +308,7 @@ requests.get('https://www.slscan.io/', verify=CONF.ca_file)
 The example above uses the variable CONF.ca_file to store the location of the CA trust store, which is used to confirm that the certificate received is from a trusted authority.
 
 
-B310: urllib_urlopen
+B310: urllib_urlopen (Unused)
 --------------------
 
 Audit url open for permitted schemes. Allowing use of 'file:'' or custom
@@ -473,18 +465,6 @@ SSH/SFTP/SCP or some other encrypted protocol.
 |------|---------------------|------------------------------------|-----------|
 | B321 | ftplib              | - ftplib.\*                        | High      |
 
-B322: input
-------------
-
-The input method in Python 2 will read from standard input, evaluate and
-run the resulting string as python source code. This is similar, though in
-many ways worse, than using eval. On Python 2, use raw_input instead, input
-is safe in Python 3.
-
-| ID   |  Name               |  Calls                             |  Severity |
-|------|---------------------|------------------------------------|-----------|
-| B322 | input               | - input                            | High      |
-
 B323: unverified_context
 ------------------------
 
@@ -546,138 +526,6 @@ Consider possible security implications associated with these modules.
 |      |                     | - dill                             |           |
 |      |                     | - shelve                           |           |
 
-B404: import_subprocess
------------------------
-
-Consider possible security implications associated with these modules.
-
-| ID   |  Name               |  Imports                           |  Severity |
-|------|---------------------|------------------------------------|-----------|
-| B404 | import_subprocess   | - subprocess                       | Low       |
-
-Many common tasks involve interacting with the operating system - we write a lot of code that configures, modifies, or otherwise controls the system, and there are a number of pitfalls that can come along with that.
-
-Shelling out to another program is a pretty common thing to want to do. In most cases, you will want to pass parameters to this other program. Here is a simple function for pinging another server.
-
-### Incorrect
-
-```python
-def ping(myserver):
-    return subprocess.check_output('ping -c 1 %s' % myserver, shell=True)
-```
-
-```bash
->>> ping('8.8.8.8')
-64 bytes from 8.8.8.8: icmp_seq=1 ttl=58 time=5.82 ms
-```
-
-This program just supplies a string as a command to the shell, which runs it without thinking too hard about it. There’s no semantic separation between the input parameters, i.e. the shell cannot tell where the command is supposed to end, and where the parameters start.
-
-If the myserver parameter is user controlled, this can be used to execute arbitrary programs, such as rm:
-
-```bash
->>> ping('8.8.8.8; rm -rf /')
-64 bytes from 8.8.8.8: icmp_seq=1 ttl=58 time=6.32 ms
-rm: cannot remove `/bin/dbus-daemon': Permission denied
-rm: cannot remove `/bin/dbus-uuidgen': Permission denied
-rm: cannot remove `/bin/dbus-cleanup-sockets': Permission denied
-rm: cannot remove `/bin/cgroups-mount': Permission denied
-rm: cannot remove `/bin/cgroups-umount': Permission denied
-...
-```
-
-If you choose to test this, we recommend that you pick a command that is less destructive than ‘rm -rf /’, such as ‘touch helloworld.txt’.
-
-Correct
-
-This function can be re-written safely:
-
-```python
-def ping(myserver):
-    args = ['ping', '-c', '1', myserver]
-    return subprocess.check_output(args, shell=False)
-```
-
-Rather than passing a string to subprocess, our function passes a list of strings. The ping program gets each argument separately (even if the argument has a space in it), so the shell does not process other commands that are provided by the user after the ping command terminates. You do not have to explicitly set shell=False - it is the default.
-
-If we test this with the same input as before, the ping command interprets the myserver value correctly as a single argument, and complains because that is a really weird hostname to try and ping.
-
-```bash
->>> ping('8.8.8.8; rm -rf /')
-ping: unknown host 8.8.8.8; rm -rf /
-```
-
-This program is now much safer, even if it has to allow user-provided input.
-
-A lot of the time, our codebase uses shell=True because it’s convenient. The shell provides the ability to pipe things around without buffering them in memory, and allows a malicious user to chain additional commands after a legitimate command is run.
-
-### Incorrect
-
-Here is a simple function that uses curl to grab a page from a website, and pipe it directly to the wordcount program to tell us how many lines there are in the HTML source code.
-
-```python
-def count_lines(website):
-    return subprocess.check_output('curl %s | wc -l' % website, shell=True)
-```
-
-```bash
-#>>> count_lines('www.google.com')
-#'7\n'
-```
-
-(That output is correct, by the way - the google html source does have 7 lines.)
-
-The function is insecure because it uses shell=True, which allows shell injection. A user to who instructs your code to fetch the website ; rm -rf / can do terrible things to what used to be your machine.
-
-If we convert the function to use shell=False, it doesn’t work.
-
-```python
-def count_lines(website):
-    args = ['curl', website, '|', 'wc', '-l']
-    return subprocess.check_output(args, shell=False)
-```
-
-```bash
-# >>> count_lines('www.google.com')
-# curl: (6) Could not resolve host: |
-# curl: (6) Could not resolve host: wc
-# Traceback (most recent call last):
-#  File "<stdin>", line 3, in count_lines
-#  File "/usr/lib/python2.7/subprocess.py", line 573, in check_output
-#    raise CalledProcessError(retcode, cmd, output=output)
-# subprocess.CalledProcessError: Command
-# '['curl', 'www.google.com', '|', 'wc', '-l']' returned non-zero exit status 6
-```
-
-The pipe doesn’t mean anything special when shell=False, and so curl tries to download the website called ‘|’. This does not fix the issue, rather it causes it to be more broken than before.
-
-If we can’t rely on pipes if we have shell=False, how should we do this?
-
-### Correct
-
-```python
-def count_lines(website):
-    args = ['curl', website]
-    args2 = ['wc', '-l']
-    process_curl = subprocess.Popen(args, stdout=subprocess.PIPE,
-                                    shell=False)
-    process_wc = subprocess.Popen(args2, stdin=process_curl.stdout,
-                                  stdout=subprocess.PIPE, shell=False)
-    # Allow process_curl to receive a SIGPIPE if process_wc exits.
-    process_curl.stdout.close()
-    return process_wc.communicate()[0]
-```
-
-```bash
-# >>> count_lines('www.google.com')
-# '7\n'
-```
-
-Rather than calling a single shell process that runs each of our programs, we run them separately and connect stdout from curl to stdin for wc. We specify stdout=subprocess.PIPE, which tells subprocess to send that output to the respective file handler.
-
-Treat pipes like file descriptors (you can actually use FDs if you want) they may block on reading and writing if nothing is connected to the other end. That’s why we use communicate(), which reads until EOF on the output and then waits for the process to terminate. You should generally avoid reading and writing to pipes directly unless you really know what you’re doing - it’s easy to work yourself into a situation that can deadlock.
-
-Note that communicate() buffers the result in memory - if that’s not what you want, use a file descriptor for stdout to pipe that output into a file.
 
 B405: import_xml_etree
 ----------------------

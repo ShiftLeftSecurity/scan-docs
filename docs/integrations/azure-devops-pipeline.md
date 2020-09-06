@@ -70,7 +70,6 @@ steps:
       $HOME/.local/bin/scan -t java,depscan -o $(Build.ArtifactStagingDirectory)/CodeAnalysisLogs
   env:
     WORKSPACE: https://github.com/prabhu/struts2-rce/blob/$(Build.SourceVersion)
-    SCAN_DEBUG_MODE: debug
     GITHUB_TOKEN: $(GITHUB_TOKEN)
 
 - task: PublishBuildArtifacts@1

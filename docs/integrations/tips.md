@@ -58,6 +58,10 @@ SAST Scan Summary
 
 With a local config you can override the scan type and even configure the command line args for the tools as shown.
 
+!!! Note
+    It is currently not possible to include dependency and license scan result as a build breaker rule. This [issue](https://github.com/ShiftLeftSecurity/sast-scan/issues/136) tracks this feature request.
+
+
 ## Use CI build reference as runGuid
 
 By setting the environment variable `SCAN_ID` you can re-use the CI build reference as the run guid for the reports. This is useful to reverse lookup the pipeline result based on the scan result.
@@ -79,3 +83,20 @@ scan --type java
 ```
 
 This approach seems to work with Linux, Mac and WSL 1 and 2 for Windows.
+
+## Seccomp profile
+
+Scan supports invocation with a seccomp profile which can be downloaded from [here](https://github.com/ShiftLeftSecurity/sast-scan/blob/master/contrib/seccomp.json)
+
+```bash
+# Copy seccomp.json from https://github.com/ShiftLeftSecurity/sast-scan/blob/master/contrib/seccomp.json
+podman run --security-opt seccomp=/home/guest/sast-scan/contrib/seccomp.json -e "WORKSPACE=$(pwd)" -v "$(pwd):/app" shiftleft/scan scan
+```
+
+## Troubleshooting
+
+Scan by default suppresses all errors and messages from the tools as a [philosophy](../getting-started/zen-of-scan.md). To debug issues, especially when 0 results are reported by all tools, simply pass the environment variable `SCAN_DEBUG_MODE=debug` as shown.
+
+```
+-e SCAN_DEBUG_MODE=debug
+```
