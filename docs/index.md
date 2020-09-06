@@ -1,6 +1,6 @@
 # Introduction
 
-![scan-logo](../images/scan-light.png)
+![scan-logo](images/scan-light.png)
 
 Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
 
@@ -53,16 +53,16 @@ Full list of supported languages is as follows:
 | AWS CloudFormation / CDK     | aws | ✓ | ✓ | | | ✓ |
 | Azure Resource Manager Templates     | arm | ✓ | ✓ | | | ✓ |
 | Bash     | bash | ✓ | ✓ | | | ✓ |
-| :material-check-all: Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
-| :material-check-all: Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
-| :material-check-all: Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
-| :material-check-all: Scala    | scala | ✓ | ✓ | ✓ | ✓ | ✓ |
-| :material-check-all: Groovy    | groovy | ✓ | ✓ | ✓ | ✓ | ✓ |
-| :material-check-all: JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Scala    | scala | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Groovy    | groovy | ✓ | ✓ | ✓ | ✓ | ✓ |
+| JSP     | jsp | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Node.js     | nodejs | ✓ | 🚧 | ✓ | ✓ | ✓ |
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
-| :material-check-all: Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
-| :material-check-all: Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Ruby     | ruby | ✓ | | ✓ | ✓ | |
 | Rust     | rust | ✓ | | ✓ | ✓ | |
 | Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
@@ -72,10 +72,7 @@ Full list of supported languages is as follows:
 | Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
 | Yaml     | yaml | ✓ | 🚧 | | | |
 
-### Legend
-
-- 🚧 - Work-in-progress feature
-- :material-check-all: - Best-in-class support
+🚧 - Work-in-progress feature
 
 To scan AWS CDK codebase, export to cloudformation and then scan using `aws` type.
 
