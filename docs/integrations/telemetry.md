@@ -1,17 +1,11 @@
 # Telemetry for scan invocations
 
-Telemetry is a strongly contested feature in the open-source and sometimes even in the enterprise community. There are numerous benefits from a telemetry service as part of a scan rollout in your organization. For instance, it is possible to understand the security posture of the entire organization and the individual teams based on the aggregation of data. With scan, it is possible to:
+Telemetry is a strongly contested feature in the open-source and sometimes even in the enterprise community. There are numerous benefits from a telemetry service as part of a scan rollout in your organization. For instance, it is possible to understand the security posture of the entire organization and the individual teams based on the aggregation of data. With scan, it is possible to enable telemetry to collect the data internally for easy compliance reporting and audit
 
-- disable telemetry altogether (Not recommended)
-- collect the data internally for easy compliance reporting and audit
 
-## Disable telemetry
+!!! Note
+    Scan comes with telemetry disabled by default.
 
-To disable telemetry during scan invocations set the environment variable `DISABLE_TELEMETRY` to true. Eg:
-
-```bash
-docker run --rm -e "WORKSPACE=${PWD}" -e "DISABLE_TELEMETRY=true" -v "$PWD:/app" shiftleft/sast-scan scan
-```
 
 ## Rollout your own service
 
