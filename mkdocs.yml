@@ -27,7 +27,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/discord
-      link: https://discord.gg/gC62PzS
+      link: https://discord.gg/7WvSxdK
     - icon: fontawesome/brands/github
       link: http://github.com/ShiftLeftSecurity/sast-scan
     - icon: fontawesome/brands/twitter
@@ -39,7 +39,7 @@ plugins:
   - minify:
       minify_html: true
   - git-revision-date-localized
-  
+
 nav:
   - "index.md"
   - "Getting started": "getting-started/README.md"
