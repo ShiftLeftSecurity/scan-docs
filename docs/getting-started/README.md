@@ -250,7 +250,7 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | BRANCH            | Git branch name. Automatically detected for git repositories. Specify this while scanning a folder or svn repository                   |
 | CREDSCAN_DEPTH    | Number of commits to audit for secrets leak. Default 2                                                                                 |
 | CREDSCAN_TIMEOUT  | Timeout for credscan. Default 2m                                                                                 |
-| DISABLE_TELEMETRY | Set to true or 1 to disable telemetry submission to the default url which is https://telemetry.appthreat.io/track |
+| DISABLE_TELEMETRY | Set to false to enable telemetry. Set the telmetry url. Default value is true which disables telemetry. |
 | TELEMETRY_URL | Set this value to a URL that will receive the telemetry json from scan invocations. Refer to [telemetry](../integrations/telemetry.md) |
 | VDB_HOME | Directory to use for caching database. For docker based execution, this directory should get mounted as a volume from the host. Eg: `-e "VDB_HOME=/db" -v "/tmp:/db"` |
 | NVD_START_YEAR | Default: 2018. Supports upto 1999 but increasing the year would increase the time and memory usage by depscan and may not work in CI environments |
