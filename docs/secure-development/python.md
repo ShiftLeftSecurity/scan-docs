@@ -8,7 +8,39 @@ Scan bundles two python scanners:
 ## Custom scanner rules
 
 - OWASP top 10 rules
-- Security best practices for frameworks such as Flask, Django, aiohttp, pymongo and so on.
+- Security best practices for frameworks such as Flask, Django, aiohttp, pymongo and so on. Full list is provided below.
+
+### Python frameworks
+
+- Django
+- Flask
+- Jinja2
+- CherryPy
+- Quart
+- Pyramid
+- web2py
+- Turbogears
+- Masonite
+- Bottle
+- Falcon
+- Sanic
+- FastAPI
+- Starlette
+- Tornado
+- Pylons
+- aiohttp
+- Kore
+
+- SQLAlchemy
+- Pony ORM
+- PyMongo
+- MySQL
+- Azure CosmosDB
+
+- Pandas
+- Tensorflow
+- Jupyter
+- PyTorch
 
 ## Bandit rules
 
