@@ -12,6 +12,7 @@ edit_uri: ""
 copyright: Copyright &copy; 2019 - 2020 Team Scan
 theme:
   features:
+    - header.autohide
     - search.highlight
     - navigation.expand
     - instant

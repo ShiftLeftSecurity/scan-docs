@@ -63,7 +63,7 @@ Full list of supported languages is as follows:
 | PL/SQL     | plsql | ✓ | ✓ | | | ✓ |
 | Php     | php | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Ruby     | ruby | ✓ | | ✓ | ✓ | |
+| Ruby     | ruby | ✓ | ✓ (1) | ✓ | ✓ | |
 | Rust     | rust | ✓ | | ✓ | ✓ | |
 | Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
 | Serverless     | serverless | ✓ | ✓ | | | ✓ |
@@ -74,7 +74,17 @@ Full list of supported languages is as follows:
 
 🚧 - Work-in-progress feature
 
-To scan AWS CDK codebase, export to cloudformation and then scan using `aws` type.
+!!! Note
+	(1) - For Ruby, `brakeman` is the only supported tool and is currently not bundled with the scan image. Once you have a suitable license for brakeman (Not free for commercial use), run the below commands before invoking scan.
+
+	```
+	sudo gem install brakeman
+	brakeman -q --no-exit-on-warn --no-exit-on-error -o reports/source-ruby-report.json
+	```
+
+	Scan would then take the json report `source-ruby-report.json` produced and use it for SARIF conversion and build breaker logic. The file should be produced in the reports directory before the invocation.
+
+	To scan AWS CDK codebase, export to cloudformation and then scan using `aws` type.
 
 ## Start with your use case
 
