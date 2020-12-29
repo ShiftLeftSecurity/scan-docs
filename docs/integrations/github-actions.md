@@ -1,6 +1,6 @@
 # Integration as Github Actions
 
-Scan is available as a free GitHub action [here](https://github.com/marketplace/actions/shiftleft-scan)
+Scan is available as a free GitHub action called [Security and Licence Scan](https://github.com/marketplace/actions/security-and-licence-scan)
 
 A minimal setup configuration is shown below:
 
