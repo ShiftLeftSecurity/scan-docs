@@ -58,7 +58,7 @@ sast-tool implements version 2.1.0 specification which can be found [here](https
   - endTimeUtc: Scan end time
   - workingDirectory: Working directory used for the scan
 - properties:
-  - metrics: This section contains the scan summary such as total issues found as well as the number of critical, high, medium and low issues
+  - metrics: This section contains the scan summary such as total issues found as well as the number of critical, high, medium and low issues.
 
 ```json
 "properties": {
@@ -80,10 +80,13 @@ sast-tool implements version 2.1.0 specification which can be found [here](https
 - level: string representing the type of finding - can be error, warning, note
 - locations: An array of information representing the source code, line numbers, filename (`artifactLocation`) along with the code snippet highlighting the issue. artifactLocation would start with either https:// or file:// protocol depending on the `WORKSPACE` environment variable used
 - properties:
-  - issue_confidence: UPPER case flag indicating the confidence level of the tool for the particular result. Valid values are: HIGH, MEDIUM, LOW
-  - issue_severity: UPPER case flag indicating the severity level of the particular result. Valid values are: HIGH, MEDIUM, LOW
+    - issue_confidence: UPPER case flag indicating the confidence level of the tool for the particular result. Valid values are: HIGH, MEDIUM, LOW
+    - issue_severity: UPPER case flag indicating the severity level of the particular result. Valid values are: HIGH, MEDIUM, LOW
 - baselineState: Indicates if the defect is new or recurring. Currently defaults to new for all reports
-- partialFingerprints: Currently unused
+- partialFingerprints: Contains the following fingerprints
+    - scanPrimaryLocationHash: Hash of the code snippet pointing to the vulnerability. Usually the exact location (All languages) or the source (Python and PHP)
+    - scanTagsHash: Hash of the source and sink tags (Python only)
+    - scanFileHash: Hash of the file location (All languages)
 - ruleId: ID of the rule used. This will be the present in the list of rules mentioned in the tool section
 - ruleIndex: Index of the rule in the tool section for faster lookups
 
@@ -122,7 +125,11 @@ Example of a result is shown below:
         "issue_severity": "MEDIUM"
     },
     "baselineState": "new",
-    "partialFingerprints": {},
+    "partialFingerprints": {
+        "scanPrimaryLocationHash": "f35827a889ebadc4",
+        "scanTagsHash": "e037139a5cd2951e",
+        "scanFileHash": "8aca4cdbb13ad2dc"
+    },
     "ruleId": "CWE-327",
     "ruleIndex": 2
 }
