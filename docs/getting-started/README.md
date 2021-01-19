@@ -287,3 +287,58 @@ In addition to `scan:ignore` we support `nolint`, `nosec` and `sl:ignore` marker
 
 !!! Note
     The marker should be added next to the exact line reported by scan. We currently do not support method or file level ignore.
+
+## Baseline
+
+Sometimes, your team might be interested in setting a baseline against the master/main or release branch and track only the new additions introduced by feature or epic branches.
+
+It is effortless to setup baselines with scan. Scan would automatically create a file called `.sastscan.baseline` after every analysis. This file is a simple of list of two types of fingerprints (or hashes)
+
+- Hash of the code snippet called `scanPrimaryLocationHash`
+- Hash of the source-sink tags called `scanTagsHash` (Python only)
+
+These fingerprints can also be found in the results in the [SARIF files](../integrations/sarif.md) under `partialFingerprints` section.
+
+```json
+"partialFingerprints": {
+    "scanPrimaryLocationHash": "f35827a889ebadc4",
+    "scanTagsHash": "e037139a5cd2951e",
+    "scanFileHash": "8aca4cdbb13ad2dc"
+},
+```
+
+Simply commit this file to the root directory of your repo. Every subsequent scans would suppress all the findings in the baseline file thus reporting only the new findings.
+
+!!! Note
+    Only SAST findings are supported in baseline. Support for depscan findings is coming shortly.
+
+### Use cases
+
+=== "Compare PR with main"
+    Generate and commit the baseline file for your master/main branch scans. Subsequent feature branch scans would use only the new findings for breaking the builds. With GitHub action it might resemble this.
+
+    ```yaml
+    - name: Scan
+      uses: ShiftLeftSecurity/scan-action@master
+      env:
+        WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SCAN_AUTO_BUILD: true
+      with:
+        output: reports
+
+    - name: Update scan baseline on main branch
+      if: {{ github.ref == 'refs/heads/main' }}
+      run: |
+        cp reports/.sastscan.baseline .
+
+        git config --global user.name "scan+github-actions[bot]"
+        git config --global user.email "scan+github-actions[bot]@users.noreply.github.com"
+
+        git add .sastscan.baseline
+        git commit -m "Update scan baseline"
+        git push
+    ```
+
+=== "Compare Release branches"
+    Store the baseline files for your release branches and use any json diff tool to identify the difference.
