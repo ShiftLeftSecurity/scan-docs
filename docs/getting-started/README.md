@@ -255,6 +255,8 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | VDB_HOME | Directory to use for caching database. For docker based execution, this directory should get mounted as a volume from the host. Eg: `-e "VDB_HOME=/db" -v "/tmp:/db"` |
 | NVD_START_YEAR | Default: 2018. Supports upto 1999 but increasing the year would increase the time and memory usage by depscan and may not work in CI environments |
 | GITHUB_PAGE_COUNT | Default: 5. Supports upto 30 |
+| SKIP_INSIGHTS | Set to true to skip insights rules which are usually security best-practices and not necessarily vulnerabilities (Python only) |
+| WEB_ROUTE_ONLY | Set to true to force scan to consider only web routes. Improves quality (Python only) |
 
 ## Suppression
 
