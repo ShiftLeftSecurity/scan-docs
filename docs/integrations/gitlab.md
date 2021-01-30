@@ -99,3 +99,21 @@ To customize the message used for the comment, create a .sastscanrc file in the 
 
 - summary - Summary Table
 - recommendation - One liner recommendation string (Hardcoded for now)
+
+## Vulnerability database caching
+
+In order to improve Scan's performance, it is possible to store the vulnerabilities database in GitLab's cache by simply adding the below section to your gitlab-ci.yml file to enable this feature (it works for free and commercial plans):
+
+```yaml
+cache:
+  key: depscan-DB
+  paths:
+    - vdb/
+```
+
+In addition, it is necessary to set the vulnerabilities database path to `vdb` as specified in the configuration file (It is not required to be named that way, feel free to set it as you think best):
+- `VDB_HOME` to `${CI_PROJECT_DIR}/vdb`
+
+This configuration will do the work to store the vulnerabilities per project, no matter in what branch you are running Scan, it will pick up the same vulnerabilities database. For more info, check the [GitLab's official documentation](https://docs.gitlab.com/ee/ci/caching/#cache-dependencies-in-gitlab-cicd)
+
+In addition, it is recommendable to empty the cache over the time, to prevent some recently reported vulnerabilities to be missed in the scans. Check the [official documentation](https://docs.gitlab.com/ee/ci/caching/#clearing-the-cache)
