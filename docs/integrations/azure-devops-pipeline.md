@@ -9,10 +9,12 @@ Scan has a best-in-class integration for Azure Pipelines with our dedicated [ext
 ```yaml
 - script: |
     docker run \
+      -e "VDB_HOME=/tmp" \
       -v "$(Build.SourcesDirectory):/app" \
       -v "$(Build.ArtifactStagingDirectory):/reports" \
+      -u $(id -u):$(id -g) \
       shiftleft/sast-scan scan --src /app --build \
-      --out_dir /reports/CodeAnalysisLogs
+      --out_dir /reports/CodeAnalysisLogs || true
   displayName: "Perform Scan"
   continueOnError: "true"
 
