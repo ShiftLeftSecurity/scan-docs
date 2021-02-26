@@ -13,16 +13,16 @@ A minimal setup configuration is shown below:
 An advanced configuration including the ability to cache the vulnerability database and to customize the WORKSPACE URL is below:
 
 ```yaml
-- name: Cache multiple paths
+- name: Cache vdb
   uses: actions/cache@v2
   with:
     path: |
-      ${{ github.workspace }}/db
+      ${{ github.workspace }}/vdb
     key: ${{ runner.os }}
 - name: Scan
   uses: ShiftLeftSecurity/scan-action@master
   env:
-    VDB_HOME: ${{ github.workspace }}/db
+    VDB_HOME: ${{ github.workspace }}/vdb
     WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     SCAN_AUTO_BUILD: true
