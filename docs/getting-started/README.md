@@ -118,6 +118,14 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     !!! Note
     `GITHUB_TOKEN` is required even if you are planning to use scan with GitLab, Bitbucket and other providers. Dependency and license lookup for open-source packages is heavily traffic shaped by GitHub themselves and hence would not work without this token.
 
+    OSS risk audit along with dependency confusion checks is now supported for npm packages. To enable this, use the environment variables `ENABLE_OSS_RISK` and `PKG_PRIVATE_NAMESPACE` as shown.
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "ENABLE_OSS_RISK=true" -e "PKG_PRIVATE_NAMESPACE=your org namespaces" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
+    ```
+
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "ENABLE_OSS_RISK=true" -e "PKG_PRIVATE_NAMESPACE=appthreat,shiftleft" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
+    ```
 === "Node.js"
     Specify `nodejs` as the type.
 
@@ -257,6 +265,8 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | GITHUB_PAGE_COUNT | Default: 5. Supports upto 30 |
 | SKIP_INSIGHTS | Set to true to skip insights rules which are usually security best-practices and not necessarily vulnerabilities (Python only) |
 | WEB_ROUTE_ONLY | Set to true to force scan to consider only web routes. Improves quality (Python only) |
+| ENABLE_OSS_RISK | Set to true to enable OSS risk audit in depscan (npm only) |
+| PKG_PRIVATE_NAMESPACE | Comma separated list of private namespace to check for dependency confusion attacks during OSS risk audit. Use along with `ENABLE_OSS_RISK` variable |
 
 ## Suppression
 

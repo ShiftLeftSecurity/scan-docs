@@ -84,6 +84,26 @@ scan --type java
 
 This approach seems to work with Linux, Mac and WSL 1 and 2 for Windows.
 
+## Run as normal user
+
+Pass `--user uid:gid` to the docker run commands to run scan as a normal user. If you get any directory creation errors then create the reports and VDB_HOME directories upfront, chown and then run scan.
+
+```bash
+mkdir -p reports,vdb
+chown -R 1000:1000 reports,vdb
+docker run --user 1000:1000 ...
+```
+
+## Run without network connectivity
+
+Pass `--network none` to the docker run command to perform security scan without any external connectivity.
+
+```bash
+docker run --network none ...
+```
+
+Automatic build and depscan will not work without connectivity. However, by caching the vulnerability database in a directory defined by the environment variable `VDB_HOME` and by building the projects upfront it is possible to run security scan without any external connectivity.
+
 ## Seccomp profile
 
 Scan supports invocation with a seccomp profile which can be downloaded from [here](https://github.com/ShiftLeftSecurity/sast-scan/blob/master/contrib/seccomp.json)
