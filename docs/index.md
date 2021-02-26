@@ -6,7 +6,10 @@ Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-s
 
 * [x] Credentials Scanning to detect accidental secret leaks
 * [x] Static Analysis Security Testing (SAST) for a range of languages and frameworks
-* [x] Open-source dependencies audit
+* [x] Open-source dependencies audit for known CVEs
+    - [x] Many languages and package formats [supported](getting-started/#language-specific-scans)
+    - [x] OSS Risk Audit for npm
+    - [x] Dependency confusion checks for npm
 * [x] Licence violation checks
 
 !!! Workflow

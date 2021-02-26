@@ -10,12 +10,19 @@ A minimal setup configuration is shown below:
     type: "credscan,java,depscan"
 ```
 
-An advanced configuration including the ability to customize the WORKSPACE URL and GitHub package search is below:
+An advanced configuration including the ability to cache the vulnerability database and to customize the WORKSPACE URL is below:
 
 ```yaml
+- name: Cache multiple paths
+  uses: actions/cache@v2
+  with:
+    path: |
+      ${{ github.workspace }}/db
+    key: ${{ runner.os }}
 - name: Scan
   uses: ShiftLeftSecurity/scan-action@master
   env:
+    VDB_HOME: ${{ github.workspace }}/db
     WORKSPACE: https://github.com/${{ github.repository }}/blob/${{ github.sha }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     SCAN_AUTO_BUILD: true
