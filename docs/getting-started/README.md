@@ -37,6 +37,12 @@ scan is distributed as both a container [image](https://hub.docker.com/r/shiftle
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type python
     ```
 
+=== "Apple M1 and arm64"
+    For arm64 based CPU such as the Apple M1 CPU use the `:arm` tag.
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan:arm scan
+    ```
+
 === "Windows"
     On Windows use `%cd%` instead of \$PWD to run the scan with Command prompt
 
@@ -63,6 +69,7 @@ scan is distributed as both a container [image](https://hub.docker.com/r/shiftle
     ```
 
     Don't forget the slash (/) before \$PWD for git-bash!
+
 
 To scan multiple projects, separate the types with a comma. Here reports will be put in the directory specified by `--out_dir`
 
