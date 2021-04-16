@@ -2,7 +2,7 @@
 
 ![scan-logo](images/scan-light.png)
 
-Scan (skæn) is a free [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
+Scan (skæn) is an [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
 
 * [x] Credentials Scanning to detect accidental secret leaks
 * [x] Static Analysis Security Testing (SAST) for a range of languages and frameworks
@@ -27,6 +27,12 @@ The above command simply invokes the below docker run command.
 
 ```bash
 docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --build
+```
+
+For arm64 based CPU such as Apple M1 use the `:arm` tag.
+
+```bash
+docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan:arm scan --build
 ```
 
 ![Java Scan](getting-started/images/scan-java.gif)
