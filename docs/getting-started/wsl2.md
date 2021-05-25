@@ -29,7 +29,7 @@ sudo apt-get -qq -y install podman build-essential fuse-overlayfs
 
 ### Configuring podman
 
-We need to make couple of changes to podman configuration. Edit the file `/etc/containers/containers.conf` and change:
+We need to make couple of changes to podman configuration. Edit the file `/usr/share/containers/containers.conf` or `/etc/containers/containers.conf` and change:
 
 - cgroup_manager to "cgroupfs" 
 - events_logger to "file"

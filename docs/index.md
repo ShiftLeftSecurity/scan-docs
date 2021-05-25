@@ -11,13 +11,14 @@ Scan (skæn) is an [open-source](https://github.com/ShiftLeftSecurity/sast-scan)
     - [x] OSS Risk Audit for npm
     - [x] Dependency confusion checks for npm
 * [x] Licence violation checks
+* [x] Container image scanning for application CVEs (New)
 
 !!! Workflow
     Scan is purpose built for DevSecOps workflow [integrations](integrations) with nifty features such as automatic build breaker, Pull Request summary comments, GitHub [Code scanning](integrations/code-scan.md) and [Bitbucket](integrations/bitbucket.md) Code Insights support and so on.
 
 ## Sample invocation
 
-Easy one-liner command below (Assuming this is fine for you):
+Easy one-liner command below for some casual testing (Assuming this is fine for you):
 
 ```bash
 sh <(curl https://slscan.sh)
@@ -28,6 +29,14 @@ The above command simply invokes the below docker run command.
 ```bash
 docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/sast-scan scan --build
 ```
+
+### MD5 hashes for the scripts
+
+| MD5 | Script | URL |
+|-----|--------|-----|
+| ad68b19ab0f01175df90b145451b1a1d | slscan.sh | https://slscan.sh |
+| 3e90e3250f4e8a15c2b808fb00171cab | install | https://slscan.sh/install |
+| 9a10d9115d7b096db7921231f9fedc47 | credscan | https://slscan.sh/credscan |
 
 For arm64 based CPU such as Apple M1 use the `:arm` tag.
 
@@ -62,6 +71,7 @@ Full list of supported languages is as follows:
 | AWS CloudFormation / CDK     | aws | ✓ | ✓ | | | ✓ |
 | Azure Resource Manager Templates     | arm | ✓ | ✓ | | | ✓ |
 | Bash     | bash | ✓ | ✓ | | | ✓ |
+| Dockerfile | dockerfile | ✓ | ✓ | | | ✓ |
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -74,12 +84,14 @@ Full list of supported languages is as follows:
 | Python     | python | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Ruby     | ruby | ✓ | ✓ (1) | ✓ | ✓ | |
 | Rust     | rust | ✓ | | ✓ | ✓ | |
+| Helm Charts     | yaml | ✓ | ✓ | | | ✓ |
 | Kubernetes     | kubernetes | ✓ | ✓ | | | ✓ |
 | Serverless     | serverless | ✓ | ✓ | | | ✓ |
 | Terraform     | terraform | ✓ | ✓ | | | ✓ |
 | Salesforce Visual Force    | vf | ✓ | ✓ | | | ✓ |
 | Apache Velocity    | vm | ✓ | ✓ | | | ✓ |
 | Yaml     | yaml | ✓ | 🚧 | | | |
+| Container Image     | docker | ✓ | 🚧 | | | ✓ |
 
 🚧 - Work-in-progress feature
 
