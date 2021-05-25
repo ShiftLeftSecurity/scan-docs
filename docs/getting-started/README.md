@@ -10,13 +10,13 @@ scan is distributed as both a container [image](https://hub.docker.com/r/shiftle
 - For Linux, first [install](https://docs.docker.com/engine/install/) and then complete these [post-install](https://docs.docker.com/engine/install/linux-postinstall/) steps.
 
 !!! Tip
-    Scan works quite well with [podman](https://podman.io/) in rootless mode on both Linux and on Windows with WSL2.
+    Scan works quite well with [podman](https://podman.io/) in both root and rootless mode on both Linux and on Windows with WSL2.
 
 ### Your first scan
 
 === "Linux and Mac"
-    Invoking the `scan` command *detects* the language automatically and proceeds with a scan
-    Easy one-liner command.
+    Invoking the `scan` command *detects* the language automatically and proceeds with a scan.
+    <br>Easy one-liner command for some casual testing (Assuming this is fine for you)
     ```bash
     sh <(curl https://slscan.sh)
     ```
@@ -41,6 +41,13 @@ scan is distributed as both a container [image](https://hub.docker.com/r/shiftle
     For arm64 based CPU such as the Apple M1 CPU use the `:arm` tag.
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/scan:arm scan
+    ```
+
+=== "Windows with WSL2"
+    Follow these [instructions](wsl2.md) to run scan on Windows with WSL2 and podman.
+
+    ```bash
+    podman run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan
     ```
 
 === "Windows"
@@ -70,6 +77,7 @@ scan is distributed as both a container [image](https://hub.docker.com/r/shiftle
 
     Don't forget the slash (/) before \$PWD for git-bash!
 
+<br>
 
 To scan multiple projects, separate the types with a comma. Here reports will be put in the directory specified by `--out_dir`
 
@@ -119,20 +127,26 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
     ```
     Or if you prefer direct docker run command.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
+    docker run --rm -e "WORKSPACE=${PWD}" -e GITHUB_TOKEN -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
     ```
 
     !!! Note
     `GITHUB_TOKEN` is required even if you are planning to use scan with GitLab, Bitbucket and other providers. Dependency and license lookup for open-source packages is heavily traffic shaped by GitHub themselves and hence would not work without this token.
 
-    OSS risk audit along with dependency confusion checks is now supported for npm packages. To enable this, use the environment variables `ENABLE_OSS_RISK` and `PKG_PRIVATE_NAMESPACE` as shown.
+    To perform license compliance checks, use the environment variable `FETCH_LICENSE`.
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "ENABLE_OSS_RISK=true" -e "PKG_PRIVATE_NAMESPACE=your org namespaces" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
+    docker run --rm -e "WORKSPACE=${PWD}" -e GITHUB_TOKEN -e "FETCH_LICENSE=true" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
+    ```
+
+    OSS risk audit along with dependency confusion checks is now supported for npm and pypi packages. To enable this, use the environment variables `ENABLE_OSS_RISK` and `PKG_PRIVATE_NAMESPACE` as shown.
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "ENABLE_OSS_RISK=true" -e "PKG_PRIVATE_NAMESPACE=your org namespaces" -e GITHUB_TOKEN -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
     ```
 
     ```bash
-    docker run --rm -e "WORKSPACE=${PWD}" -e "ENABLE_OSS_RISK=true" -e "PKG_PRIVATE_NAMESPACE=appthreat,shiftleft" -e "GITHUB_TOKEN=${GITHUB_TOKEN}" -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
+    docker run --rm -e "WORKSPACE=${PWD}" -e "ENABLE_OSS_RISK=true" -e "PKG_PRIVATE_NAMESPACE=appthreat,shiftleft" -e GITHUB_TOKEN -v "$PWD:/app" shiftleft/scan scan --src /app --type depscan
     ```
+
 === "Node.js"
     Specify `nodejs` as the type.
 
@@ -188,6 +202,53 @@ docker run --rm -e "WORKSPACE=${PWD}" -v <source path>:/app shiftleft/sast-scan 
 
     ```bash
     docker run --rm -e "WORKSPACE=${PWD}" -v "$PWD:/app" shiftleft/sast-scan scan --src /app --type php,depscan --build
+    ```
+
+=== "Container Images"
+    Scanning container images is now possible with slscan. The recommended approach is to export the container image using docker or podman save command first followed by an invocation of scan with the .tar file.
+
+    Example: To scan an image called `shiftleft/scan-slim:latest` first pull and save the image. Then invoke scan with the tar file.
+
+    ```bash
+    docker pull shiftleft/scan-slim:latest
+    docker save -o scanslim.tar shiftleft/scan-slim:latest
+    # podman save --format oci-archive -o scanslim.tar shiftleft/scan-slim:latest
+    docker run --rm -e "WORKSPACE=${PWD}" -v $PWD:/app shiftleft/scan scan --src /app/scanslim.tar -o /app/reports --type docker
+    ```
+
+    To enable, license and OSS risk audit, set the environment variables `FETCH_LICENSE` and `ENABLE_OSS_RISK`
+    ```bash
+    docker run --rm -e "WORKSPACE=${PWD}" -e "FETCH_LICENSE=true" -e "ENABLE_OSS_RISK=true" -v $PWD:/app shiftleft/scan scan --src /app/scanslim.tar -o /app/reports --type docker
+    ```
+
+    Alternatively, it is possible to let scan pull the container image before analysis. However, it requires exposing your docker or podman daemon socket which is insecure and therefore **not recommended**. You can try it if you are feeling adventurous by passing the below parameters to the docker run command.
+
+    ```bash
+    -e "DOCKER_HOST=unix:/var/run/docker.sock:" -v "/var/run/docker.sock:/var/run/docker.sock"
+    ```
+
+    Example: To scan the container image `shiftleft/scan-slim`:
+
+    ```bash
+    docker run --rm -e "WORKSPACE=$(pwd)" -e "DOCKER_HOST=unix:/var/run/docker.sock:" \
+        -v "/var/run/docker.sock:/var/run/docker.sock" \
+        -v "$(pwd):/app" shiftleft/scan scan -t docker -i shiftleft/scan-slim
+    ```
+
+    Example: To scan the container image `redmine@sha256:a5c5f8a64a0d9a436a0a6941bc3fb156be0c89996add834fe33b66ebeed2439e`:
+
+    ```bash
+    docker run --rm -e "WORKSPACE=$(pwd)" -e "DOCKER_HOST=unix:/var/run/docker.sock:" \
+        -v "/var/run/docker.sock:/var/run/docker.sock" \
+        -v "$(pwd):/app" shiftleft/scan scan -t docker -i redmine@sha256:a5c5f8a64a0d9a436a0a6941bc3fb156be0c89996add834fe33b66ebeed2439e
+    ```
+
+    Same example with podman
+
+    ```bash
+    podman run --rm -e "WORKSPACE=$(pwd)" -e "DOCKER_HOST=unix:/run/user/1000/podman/podman.sock:" \
+        -v "/run/user/1000:/run/user/1000" \
+        -v "$(pwd):/app" shiftleft/scan scan -t docker -i redmine@sha256:a5c5f8a64a0d9a436a0a6941bc3fb156be0c89996add834fe33b66ebeed2439e
     ```
 
 Refer to the [readme](https://github.com/ShiftLeftSecurity/sast-scan#bundled-tools) for a complete list of all scan types.
@@ -272,6 +333,7 @@ Scan use a number of environment variables for configuration and cutomizing the 
 | GITHUB_PAGE_COUNT | Default: 5. Supports upto 30 |
 | SKIP_INSIGHTS | Set to true to skip insights rules which are usually security best-practices and not necessarily vulnerabilities (Python only) |
 | WEB_ROUTE_ONLY | Set to true to force scan to consider only web routes. Improves quality (Python only) |
+| FETCH_LICENSE | Set to true to fetch license details for OSS packages from public registries |
 | ENABLE_OSS_RISK | Set to true to enable OSS risk audit in depscan (npm only) |
 | PKG_PRIVATE_NAMESPACE | Comma separated list of private namespace to check for dependency confusion attacks during OSS risk audit. Use along with `ENABLE_OSS_RISK` variable |
 
