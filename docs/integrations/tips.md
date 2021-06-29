@@ -57,6 +57,62 @@ SAST Scan Summary
 ```
 
 With a local config you can override the scan type and even configure the command line args for the tools as shown.
+In the following table, you can see which are the keys to use in order to configure its `build_break_rules`:
+
+| Tool | Key |
+|------|-----|
+| nodejsscan | Static Security code scan |
+| njsscan | Static Security code scan |
+| findsecbugs | Class File Analyzer |
+| pmd | Source Code Analyzer |
+| /opt/pmd-bin/bin/run.sh | Source Code Analyzer |
+| gitleaks | Secrets Audit |
+| gosec | Go Security Audit |
+| tfsec | Terraform Static Analysis |
+| lint-tf | Terraform Static Analysis |
+| shellcheck | Shell Script Analysis |
+| bandit | Security Audit for Python |
+| checkov | Security Audit for Infrastructure |
+| source-aws | Security Audit for AWS |
+| source-arm | Security Audit for Azure Resource Manag |
+| source-k8s | Kubernetes Security Audit |
+| source-kt | Kotlin Static Analysis |
+| audit-kt | Kotlin Security Audit |
+| audit-groovy | Groovy Security Audit |
+| audit-scala | Scala Security Audit |
+| detekt | Kotlin Static Analysis |
+| source-tf | Terraform Security Audit |
+| source-yaml | Security Audit for IaC |
+| staticcheck | Go Static Analysis |
+| source | Source Aode Analyzer |
+| source-java | Java Source Analyzer |
+| source-python | Python Source Analyzer |
+| source-php | PHP Source Analyzer |
+| phpstan | PHP Source Analyzer |
+| audit-python | Python Security Audit |
+| audit-php | PHP Security Audit |
+| taint-php | PHP Security Analysis |
+| taint-python | Python Security Analysis |
+| psalm | PHP Security Audit |
+| /opt/phpsast/vendor/bin/psalm | PHP Security Analysi |
+| source-js | JavaScript Source Analyzer |
+| source-go | Go Source Analyzer |
+| source-vm | Apache Velocity Source Analyzer |
+| source-vf | VisualForce Source Analyzer |
+| source-sql | SQL Source Analyzer |
+| source-jsp | JSP Source Analyzer |
+| source-serverless | Serverless Security Audit |
+| audit-jsp | JSP Security Audit |
+| source-apex | Apex Source Analyzer |
+| binary | Binary byte-code Analyzer |
+| class | Class File Analyzer |
+| jar | Jar File Analyzer |
+| cpg | ShiftLeft NextGen Analyzer |
+| inspect | ShiftLeft NextGen Analyzer |
+| ng-sast | ShiftLeft NextGen Analyzer |
+| source-ruby | Ruby Source Analyzer |
+| empty-scan | Empty Scan Ignore |
+
 
 !!! Note
     It is currently not possible to include dependency and license scan result as a build breaker rule. This [issue](https://github.com/ShiftLeftSecurity/sast-scan/issues/136) tracks this feature request.
