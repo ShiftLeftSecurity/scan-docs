@@ -74,7 +74,7 @@ In the following table, you can see which are the keys to use in order to config
 | bandit | Security Audit for Python |
 | checkov | Security Audit for Infrastructure |
 | source-aws | Security Audit for AWS |
-| source-arm | Security Audit for Azure Resource Manag |
+| source-arm | Security Audit for Azure Resource Manager |
 | source-k8s | Kubernetes Security Audit |
 | source-kt | Kotlin Static Analysis |
 | audit-kt | Kotlin Security Audit |
@@ -94,7 +94,7 @@ In the following table, you can see which are the keys to use in order to config
 | taint-php | PHP Security Analysis |
 | taint-python | Python Security Analysis |
 | psalm | PHP Security Audit |
-| /opt/phpsast/vendor/bin/psalm | PHP Security Analysi |
+| /opt/phpsast/vendor/bin/psalm | PHP Security Analysis |
 | source-js | JavaScript Source Analyzer |
 | source-go | Go Source Analyzer |
 | source-vm | Apache Velocity Source Analyzer |
@@ -111,8 +111,6 @@ In the following table, you can see which are the keys to use in order to config
 | inspect | ShiftLeft NextGen Analyzer |
 | ng-sast | ShiftLeft NextGen Analyzer |
 | source-ruby | Ruby Source Analyzer |
-| empty-scan | Empty Scan Ignore |
-
 
 !!! Note
     It is currently not possible to include dependency and license scan result as a build breaker rule. This [issue](https://github.com/ShiftLeftSecurity/sast-scan/issues/136) tracks this feature request.
