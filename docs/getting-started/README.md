@@ -2,6 +2,9 @@
 
 scan is distributed as both a container [image](https://hub.docker.com/r/shiftleft/sast-scan) and as an [AppImage executable](https://github.com/ShiftLeftSecurity/sast-scan/releases). It is therefore easy to install, setup in the CI or locally, and then to run it.
 
+!!! WARNING
+    Scan is now in maintenance mode. If you've just come across this project, then probably best to look at any alternatives. Read more [here](https://github.com/ShiftLeftSecurity/sast-scan/issues/352).
+
 ## Scanning the Application Locally
 
 ### Pre-requisites
