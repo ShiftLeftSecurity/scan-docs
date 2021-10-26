@@ -2,6 +2,9 @@
 
 ![scan-logo](images/scan-light.png)
 
+!!! WARNING
+    Scan is now in maintenance mode. If you've just come across this project, then probably best to look at any alternatives. Read more [here](https://github.com/ShiftLeftSecurity/sast-scan/issues/352).
+
 Scan (skæn) is an [open-source](https://github.com/ShiftLeftSecurity/sast-scan) security audit tool for modern DevOps teams. With an integrated multi-scanner based design, Scan can detect various kinds of security flaws in your application and infrastructure code in a single fast scan without the need for any _remote server_. The kind of flaws detected are:
 
 * [x] Credentials Scanning to detect accidental secret leaks
