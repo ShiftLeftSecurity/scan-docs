@@ -74,8 +74,13 @@ Full list of supported languages is as follows:
 | AWS CloudFormation / CDK     | aws | ✓ | ✓ | | | ✓ |
 | Azure Resource Manager Templates     | arm | ✓ | ✓ | | | ✓ |
 | Bash     | bash | ✓ | ✓ | | | ✓ |
+| C/C++     | cpp | ✓ | | 🚧 | | ✓ |
+| Clojure     | clojure | ✓ | | ✓ | | ✓ |
+| Dart     | dart | ✓ | | ✓ | | ✓ |
 | Dockerfile | dockerfile | ✓ | ✓ | | | ✓ |
+| Elixir     | elixir | ✓ | | ✓ | | ✓ |
 | Go     | go | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Haskell     | haskell | ✓ | | ✓ | | ✓ |
 | Java     | java | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Kotlin    | kotlin | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Scala    | scala | ✓ | ✓ | ✓ | ✓ | ✓ |
